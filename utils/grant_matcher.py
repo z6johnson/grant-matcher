@@ -139,10 +139,23 @@ def match_faculty(requirements, faculty_with_interests):
     for idx, f in enumerate(faculty_with_interests):
         degrees = ", ".join(f.get("degrees") or [])
         name = f"{f['first_name']} {f['last_name']}"
-        lines.append(
-            f"ID:{idx} | {name}, {degrees} | {f['title']} | "
-            f"Interests: {f['research_interests']}"
+        interests = (
+            f.get("_effective_interests")
+            or f.get("research_interests_enriched")
+            or f.get("research_interests")
+            or "N/A"
         )
+        summary = f"ID:{idx} | {name}, {degrees} | {f['title']} | Interests: {interests}"
+        extras = []
+        if f.get("expertise_keywords"):
+            extras.append(f"Keywords: {', '.join(f['expertise_keywords'])}")
+        if f.get("funded_grants"):
+            extras.append(f"Grants: {len(f['funded_grants'])} funded")
+        if f.get("h_index"):
+            extras.append(f"h-index: {f['h_index']}")
+        if extras:
+            summary += f" | {' | '.join(extras)}"
+        lines.append(summary)
     faculty_summary = "\n".join(lines)
 
     user_prompt = (

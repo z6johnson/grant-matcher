@@ -11,3 +11,5 @@ services:
         sync: false
       - key: LITELLM_MODEL
         sync: false
+      - key: DATABASE_URL
+        sync: false
