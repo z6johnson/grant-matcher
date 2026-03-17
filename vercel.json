@@ -1,8 +1,8 @@
 {
-  "buildCommand": "",
+  "buildCommand": "pip install -r requirements.txt",
   "outputDirectory": ".",
-  "routes": [
-    { "src": "/static/(.*)", "dest": "/static/$1" },
-    { "src": "/(.*)", "dest": "/index.html" }
+  "rewrites": [
+    { "source": "/static/(.*)", "destination": "/static/$1" },
+    { "source": "/(.*)", "destination": "/api/index" }
   ]
 }

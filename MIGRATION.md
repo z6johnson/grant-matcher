@@ -1,270 +1,196 @@
-# Grant Match — Migration & Deployment Guide
+# Grant Match — Deployment & Operations Guide
 
-Complete guide for deploying grant-match with the PostgreSQL data model and faculty enrichment service.
+Complete guide for deploying Grant Match on Vercel with GitHub Actions enrichment.
 
----
+## Architecture
 
-## 1. Database Setup
+```
+GitHub Repository
+├── Vercel (Web Service — Flask serves frontend + API)
+├── GitHub Actions (Scheduled enrichment — weekly cron)
+└── data/faculty.json (Version-controlled data store)
+```
 
-### Production: Neon Postgres (free tier)
-
-1. Create a free account at [neon.tech](https://neon.tech)
-2. Create a new project (any region — `us-east-1` recommended for Render)
-3. Copy the connection string from the dashboard. It looks like:
-   ```
-   postgresql://user:password@ep-xxxxx.us-east-1.aws.neon.tech/neondb?sslmode=require
-   ```
-4. Set this as your `DATABASE_URL` environment variable (see Section 2)
-
-**Neon free tier includes:** 0.5 GB storage, auto-suspend after 5 min idle, no expiration.
-
-### Local development: SQLite (automatic)
-
-If `DATABASE_URL` is not set, the app automatically uses a local SQLite database at `data/grant_match.db`. No setup needed.
-
-### Auto-seeding
-
-On first run, if the `faculty` table is empty, the app automatically imports all records from `data/faculty.json`. This is idempotent — it only runs once per database.
+- **Vercel** serves the frontend and grant-matching API as a single serverless function
+- **GitHub Actions** runs enrichment offline (no timeout constraints) and commits updated data back to the repo
+- **No database** — `data/faculty.json` is the single source of truth, version-controlled with full git history
 
 ---
 
-## 2. Environment Variables
+## 1. Vercel Setup
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `DATABASE_URL` | Yes (prod) | PostgreSQL connection string. Omit for local SQLite. |
-| `LITELLM_API_KEY` | Yes | API key for the LLM provider |
-| `LITELLM_API_BASE` | Yes | Base URL for the LLM API endpoint |
-| `LITELLM_MODEL` | No | Model identifier (default: `openai/api-gpt-oss-120b`) |
-| `ENRICHMENT_API_KEY` | Yes (prod) | Shared secret for enrichment API auth. Set to any strong random string. |
-| `NCBI_API_KEY` | No | PubMed API key for higher rate limits (10 req/s vs 3). Free at [ncbi.nlm.nih.gov/account](https://www.ncbi.nlm.nih.gov/account/) |
+### Connect the repository
 
-### Local `.env` file example
+1. Sign up at [vercel.com](https://vercel.com) (GitHub login recommended)
+2. Click **Add New Project** → import the `grant-match` repository
+3. Vercel auto-detects the Python app via `vercel.json`
+4. Deploy — the first build installs dependencies and starts serving
+
+### Set environment variables
+
+In the Vercel dashboard, go to your project → **Settings** → **Environment Variables**:
+
+| Variable | Required | Value |
+|----------|----------|-------|
+| `LITELLM_API_KEY` | Yes | Your LLM provider API key |
+| `LITELLM_API_BASE` | Yes | Your LLM API base URL |
+| `LITELLM_MODEL` | No | Default: `openai/api-gpt-oss-120b` |
+
+### Verify
+
+Visit your Vercel URL — you should see the Grant Match UI. Upload a grant PDF to test matching.
+
+---
+
+## 2. Local Development
+
+### Quick start
+
+```bash
+git clone https://github.com/your-org/grant-match.git
+cd grant-match
+pip install -r requirements.txt
+
+# Create .env with your LLM credentials
+cp .env.example .env  # or create manually
+
+# Run locally
+python -m flask run
+```
+
+### Local `.env` file
 
 ```env
-DATABASE_URL=postgresql://user:password@ep-xxxxx.us-east-1.aws.neon.tech/neondb?sslmode=require
 LITELLM_API_KEY=your-llm-api-key
 LITELLM_API_BASE=https://your-llm-endpoint.com/v1
-LITELLM_MODEL=openai/api-gpt-oss-120b
-ENRICHMENT_API_KEY=your-secret-key-here
-NCBI_API_KEY=your-ncbi-key-here
 ```
 
 ---
 
-## 3. Deployment to Render
+## 3. Faculty Enrichment
 
-### Prerequisites
-- A Render account with the grant-match repo connected
-- Environment variables configured in the Render dashboard
+Enrichment populates faculty records with data from public academic sources. It runs via **GitHub Actions** — either on a weekly schedule or triggered manually.
 
-### render.yaml
+### How it works
 
-The `render.yaml` in the repo defines the web service. All env vars are marked `sync: false` — set them manually in the Render dashboard under **Environment**.
+1. GitHub Actions checks out the repo
+2. Runs `python enrichment/run.py` which queries public APIs (UCSD Profiles, NIH RePORTER, PubMed, ORCID)
+3. An LLM normalizes the raw data into structured fields
+4. Updated `data/faculty.json` is committed and pushed back to the repo
+5. Vercel auto-deploys with the updated data
 
-### Steps
+### Configure GitHub Secrets
 
-1. Push your code to the connected branch
-2. Render auto-deploys on push
-3. In the Render dashboard, go to **Environment** and set all variables from Section 2
-4. The first deploy will auto-create tables and seed faculty data from `faculty.json`
-5. Verify the app is running: `curl https://your-app.onrender.com/api/faculty`
+In your repo → **Settings** → **Secrets and variables** → **Actions**, add:
 
-### gunicorn configuration
+| Secret | Required | Purpose |
+|--------|----------|---------|
+| `LITELLM_API_KEY` | Yes | LLM API key for normalization |
+| `LITELLM_API_BASE` | Yes | LLM API base URL |
+| `LITELLM_MODEL` | No | LLM model override |
+| `NCBI_API_KEY` | No | PubMed higher rate limits. Free at [ncbi.nlm.nih.gov/account](https://www.ncbi.nlm.nih.gov/account/) |
 
-Already configured in `render.yaml`:
-```
-gunicorn app:app --bind 0.0.0.0:$PORT --timeout 120
-```
+### Run enrichment manually
 
-The 120s timeout accommodates LLM calls during grant matching (~10-15s each, two calls per match).
+1. Go to **Actions** tab in your GitHub repo
+2. Select **Faculty Enrichment** workflow
+3. Click **Run workflow**
+4. Optionally specify sources or faculty indices
+5. Watch the logs for progress
 
----
+### Schedule
 
-## 4. Running Enrichment
+By default, enrichment runs **every Sunday at midnight UTC**. Edit `.github/workflows/enrich.yml` to change the cron schedule.
 
-Enrichment is triggered via API endpoints, not CLI. All write endpoints require an `X-API-Key` header.
+### Enrichment sources
 
-### Endpoints
-
-#### Check enrichment coverage
-```bash
-curl https://your-app.onrender.com/api/enrichment/status
-```
-
-Response:
-```json
-{
-  "total_faculty": 130,
-  "with_original_interests": 77,
-  "with_enriched_interests": 0,
-  "with_funded_grants": 0,
-  "with_publications": 0,
-  "coverage_original": 59.2,
-  "coverage_enriched": 0.0
-}
-```
-
-#### Enrich all faculty (background job)
-```bash
-curl -X POST https://your-app.onrender.com/api/enrichment/run \
-  -H "X-API-Key: your-secret-key-here" \
-  -H "Content-Type: application/json" \
-  -d '{}'
-```
-
-Returns immediately with a job ID. Poll `/api/enrichment/status` to track progress.
-
-#### Enrich with specific sources only
-```bash
-curl -X POST https://your-app.onrender.com/api/enrichment/run \
-  -H "X-API-Key: your-secret-key-here" \
-  -H "Content-Type: application/json" \
-  -d '{"sources": ["ucsd_profile", "nih_reporter"]}'
-```
-
-#### Enrich specific faculty members
-```bash
-curl -X POST https://your-app.onrender.com/api/enrichment/run \
-  -H "X-API-Key: your-secret-key-here" \
-  -H "Content-Type: application/json" \
-  -d '{"faculty_ids": [1, 2, 3]}'
-```
-
-#### Enrich a single faculty member (synchronous)
-```bash
-curl -X POST https://your-app.onrender.com/api/enrichment/run/1 \
-  -H "X-API-Key: your-secret-key-here"
-```
-
-#### View enrichment history for a faculty member
-```bash
-curl https://your-app.onrender.com/api/enrichment/log/1
-```
+| Source | Confidence | What it provides | Rate limit |
+|--------|-----------|-----------------|------------|
+| UCSD Profiles | 1.0 | Research description, profile URL | 1 req/2s |
+| NIH RePORTER | 0.8 | Funded grants, abstracts | 1 req/s |
+| PubMed | 0.7 | Recent publications, MeSH terms | 3 req/s (10 with NCBI key) |
+| ORCID | 0.9 | ORCID ID, works, fundings | 1 req/s |
 
 ### Expected timings
 
-| Source | Per faculty | All 130 faculty | Rate limit |
-|--------|-----------|-----------------|------------|
-| UCSD Profiles | ~4s (2 requests) | ~9 min | 1 req/2s |
-| NIH RePORTER | ~1s | ~2.5 min | 1 req/s |
-| PubMed | ~1s (2 requests) | ~1.5 min | 3 req/s (10 with key) |
-| ORCID | ~2s (2 requests) | ~4.5 min | 1 req/s |
-| **All sources** | ~8s | **~18 min** | — |
-
-### Recommended enrichment order
-
-1. Start with UCSD Profiles only — fills the most critical gap (null research interests):
-   ```bash
-   curl -X POST .../api/enrichment/run \
-     -H "X-API-Key: ..." \
-     -d '{"sources": ["ucsd_profile"]}'
-   ```
-2. Then add NIH RePORTER + PubMed for grant/publication data
-3. Finally add ORCID for supplemental coverage
+| Source | Per faculty | All 130 faculty |
+|--------|-----------|-----------------|
+| UCSD Profiles | ~4s | ~9 min |
+| NIH RePORTER | ~1s | ~2.5 min |
+| PubMed | ~1s | ~1.5 min |
+| ORCID | ~2s | ~4.5 min |
+| **All sources** | ~8s | **~18 min** |
 
 ---
 
-## 5. Data Model Reference
+## 4. Data Model
 
-### faculty table
+### `data/faculty.json` structure
 
-| Column | Type | Description |
-|--------|------|-------------|
-| `id` | INTEGER PK | Auto-increment ID |
-| `first_name` | TEXT | Faculty first name |
-| `last_name` | TEXT | Faculty last name |
-| `degrees` | JSON | Array of degree strings, e.g. `["MD", "PhD"]` |
-| `title` | TEXT | Academic title |
-| `email` | TEXT | Email address |
-| `department` | TEXT | Department (for future multi-dept support) |
-| `school` | TEXT | School name |
-| `research_interests` | TEXT | **Original** from directory scrape — never overwritten |
-| `research_interests_enriched` | TEXT | LLM-normalized summary from enrichment |
-| `expertise_keywords` | JSON | Array of keyword strings from LLM normalization |
-| `profile_url` | TEXT | UCSD profiles page URL |
-| `orcid` | TEXT | ORCID identifier |
-| `google_scholar_id` | TEXT | Google Scholar profile ID |
-| `h_index` | INTEGER | h-index from Google Scholar |
-| `recent_publications` | JSON | Array of {title, year, journal, mesh_terms} |
-| `funded_grants` | JSON | Array of {title, agency, amount, start_date, co_pis} |
-| `source_url` | TEXT | URL of original data source |
-| `created_at` | TIMESTAMP | Record creation time |
-| `updated_at` | TIMESTAMP | Last modification time |
+```json
+{
+  "school": "Herbert Wertheim School of Public Health and Human Longevity Science",
+  "university": "UC San Diego",
+  "source_url": "https://hwsph.ucsd.edu/people/faculty/faculty-directory.html",
+  "date_retrieved": "2026-03-11",
+  "faculty": [
+    {
+      "first_name": "Wael",
+      "last_name": "Al-Delaimy",
+      "degrees": ["MD", "PhD"],
+      "title": "Professor",
+      "email": "waldelaimy@health.ucsd.edu",
+      "research_interests": "Original from directory — never overwritten",
 
-### enrichment_log table
+      "research_interests_enriched": "LLM-normalized summary from enrichment",
+      "expertise_keywords": ["epidemiology", "HIV", "..."],
+      "methodologies": ["cohort study", "RCT", "..."],
+      "disease_areas": ["cardiovascular disease", "..."],
+      "populations": ["adolescents", "refugees", "..."],
+      "profile_url": "https://profiles.ucsd.edu/...",
+      "orcid": "0000-0001-2345-6789",
+      "h_index": 42,
+      "recent_publications": [{"title": "...", "year": 2025, "journal": "..."}],
+      "funded_grants": [{"title": "...", "agency": "NIH", "start_date": "2023"}],
+      "last_enriched": "2026-03-16T00:00:00+00:00"
+    }
+  ]
+}
+```
 
-| Column | Type | Description |
-|--------|------|-------------|
-| `id` | INTEGER PK | Auto-increment ID |
-| `faculty_id` | INTEGER FK | References faculty.id |
-| `source_name` | TEXT | Source identifier (ucsd_profile, nih_reporter, pubmed, orcid) |
-| `source_url` | TEXT | Exact URL or API endpoint fetched |
-| `field_updated` | TEXT | Which faculty field was changed |
-| `old_value` | TEXT | Previous value (for audit) |
-| `new_value` | TEXT | New value written |
-| `confidence` | FLOAT | 0.0–1.0 confidence score |
-| `method` | TEXT | How data was obtained (api, scrape, llm_extraction) |
-| `raw_response` | TEXT | Raw API/scrape response (truncated to 5KB) |
-| `retrieved_at` | TIMESTAMP | When this enrichment occurred |
+### `data/enrichment_log.json`
 
-### match_audit table
+Append-only log tracking every field change made by enrichment. Each entry records the source, field, old/new values, confidence score, and timestamp. This provides full provenance — and since the file is in git, you get diffs over time.
 
-| Column | Type | Description |
-|--------|------|-------------|
-| `id` | INTEGER PK | Auto-increment ID |
-| `run_date` | TIMESTAMP | When the match was run |
-| `grant_filename` | TEXT | Uploaded file name |
-| `grant_title` | TEXT | Extracted grant title |
-| `funding_agency` | TEXT | Extracted funding agency |
-| `grant_requirements` | JSON | Full extracted requirements |
-| `results` | JSON | Full match results array |
-| `faculty_count` | INTEGER | Faculty considered in matching |
-| `model_used` | TEXT | LLM model identifier |
-| `processing_seconds` | FLOAT | Total processing time |
-
-### Enrichment source confidence levels
+### Source confidence levels
 
 | Source | Confidence | Rationale |
 |--------|-----------|-----------|
-| UCSD Profiles | 1.0 | Institutional source, closest to faculty's own description |
-| ORCID | 0.9 | Self-reported by the researcher |
-| NIH RePORTER | 0.8 | Verified federal grant records |
-| PubMed | 0.7 | Strong signal, but name disambiguation can be imperfect |
-| LLM Normalizer | 0.85 | Synthesized from all sources by LLM |
-| Google Scholar | 0.5 | Name matching unreliable (future/optional) |
+| UCSD Profiles | 1.0 | Institutional source |
+| ORCID | 0.9 | Self-reported by researcher |
+| LLM Normalizer | 0.85 | Synthesized from all sources |
+| NIH RePORTER | 0.8 | Verified federal records |
+| PubMed | 0.7 | Name disambiguation can be imperfect |
 
 ---
 
-## 6. Adding New Enrichment Sources
-
-To add a new data source:
+## 5. Adding New Enrichment Sources
 
 ### Step 1: Create the source class
 
-Create `enrichment/sources/my_source.py`:
-
 ```python
+# enrichment/sources/my_source.py
 from .base import BaseSource
 
 class MySource(BaseSource):
     source_name = "my_source"
-    min_request_interval = 1.0  # seconds between requests
+    min_request_interval = 1.0
     confidence = 0.8
 
     def fields_provided(self):
         return ["field_name_1", "field_name_2"]
 
     def fetch(self, faculty_dict):
-        """Fetch data for a faculty member.
-
-        Args:
-            faculty_dict: Dict with first_name, last_name, email, etc.
-
-        Returns:
-            Dict of {field_name: value}, or None if no data found.
-            Use _source_url key for provenance tracking.
-        """
         # Your API/scraping logic here
         return {
             "field_name_1": "value",
@@ -272,57 +198,42 @@ class MySource(BaseSource):
         }
 ```
 
-### Step 2: Register in pipeline.py
-
-In `enrichment/pipeline.py`, add the import and registry entry:
+### Step 2: Register in `enrichment/pipeline.py`
 
 ```python
 from .sources.my_source import MySource
 
 SOURCE_CLASSES = {
-    ...
+    ...,
     "my_source": MySource,
 }
 ```
 
-### Step 3: Handle in normalizer.py (if needed)
+### Step 3: Handle in `enrichment/normalizer.py` (if applicable)
 
-If your source provides data the LLM normalizer should consider, add a section in `enrichment/normalizer.py`'s `normalize_faculty_data()` function.
-
-### Step 4: Add model fields (if needed)
-
-If your source provides data that doesn't fit existing Faculty columns, add new columns to `models.py` and include them in `Faculty.to_dict()`.
+Add a section in `normalize_faculty_data()` to include the source's data in the LLM prompt.
 
 ---
 
-## 7. Phase Roadmap
+## 6. API Reference
+
+### Frontend
+| Method | Path | Description |
+|--------|------|-------------|
+| GET | `/` | Grant Match web application |
+
+### Grant Matching
+| Method | Path | Description |
+|--------|------|-------------|
+| POST | `/api/match` | Upload grant PDF/TXT, get faculty matches |
+
+---
+
+## 7. Roadmap
 
 | Phase | Status | What |
 |-------|--------|------|
-| Phase 1 | Done | PostgreSQL data model, SQLAlchemy ORM, faculty repository, match audit logging, UCSD profile scraper |
-| Phase 2 | Done | NIH RePORTER API client, PubMed E-utilities client, enriched grant matcher prompt |
-| Phase 3 | Done | ORCID API client, backend enrichment service (API endpoints), API key auth, migration documentation |
-| Future | Planned | Google Scholar source (optional, fragile), admin dashboard, scheduled re-enrichment, multi-school support |
-
----
-
-## 8. API Reference (Complete)
-
-### Grant Matching
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| POST | `/api/match` | None | Upload grant PDF/TXT, get faculty matches |
-
-### Faculty
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| GET | `/api/faculty` | None | List all faculty. `?q=search` for text search |
-| GET | `/api/faculty/<id>` | None | Get single faculty record |
-
-### Enrichment
-| Method | Endpoint | Auth | Description |
-|--------|----------|------|-------------|
-| GET | `/api/enrichment/status` | None | Coverage stats + job progress |
-| POST | `/api/enrichment/run` | X-API-Key | Start batch enrichment (background) |
-| POST | `/api/enrichment/run/<id>` | X-API-Key | Enrich one faculty (synchronous) |
-| GET | `/api/enrichment/log/<id>` | None | Provenance log for a faculty member |
+| 1 | Done | Faculty directory scraper, JSON data model, grant matcher |
+| 2 | Done | Enrichment pipeline (UCSD, NIH, PubMed, ORCID), LLM normalizer |
+| 3 | Done | Vercel deployment, GitHub Actions enrichment |
+| Future | Planned | Admin dashboard, multi-school support, UCSD ITS deployment |

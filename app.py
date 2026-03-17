@@ -1,46 +1,48 @@
 import json
 import logging
 import os
-import re
-import time
 
 from dotenv import load_dotenv
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, send_from_directory
 from flask_cors import CORS
 
-from db import init_db
-from enrichment.routes import enrichment_bp
-from models import MatchAudit, db
 from utils.document_parser import extract_text
-from utils.faculty_repository import get_faculty_for_matching
-from utils.grant_matcher import extract_grant_requirements, match_faculty
+from utils.grant_matcher import process_grant
 
 load_dotenv()
 
 app = Flask(__name__)
 app.config["MAX_CONTENT_LENGTH"] = 10 * 1024 * 1024  # 10 MB
 
-CORS(app, origins=[
-    re.compile(r"https://.*\.vercel\.app"),
-    re.compile(r"https://.*\.onrender\.com"),
-    "http://localhost:*",
-    "http://127.0.0.1:*",
-])
+# CORS only needed for local development (same-origin on Vercel)
+CORS(app, origins=["http://localhost:*", "http://127.0.0.1:*"])
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 ALLOWED_EXTENSIONS = {"pdf", "txt"}
 
-# Initialize database (creates tables and seeds from JSON on first run)
-init_db(app)
+_faculty_data = None
 
-# Register enrichment API endpoints
-app.register_blueprint(enrichment_bp)
+
+def get_faculty_data():
+    """Load faculty data from JSON file (cached after first read)."""
+    global _faculty_data
+    if _faculty_data is None:
+        data_path = os.path.join(os.path.dirname(__file__), "data", "faculty.json")
+        with open(data_path) as f:
+            _faculty_data = json.load(f)
+    return _faculty_data
 
 
 def allowed_file(filename):
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+@app.route("/")
+def index():
+    """Serve the frontend."""
+    return send_from_directory(".", "index.html")
 
 
 @app.route("/api/match", methods=["POST"])
@@ -60,64 +62,14 @@ def match():
     except ValueError as e:
         return jsonify({"error": str(e)}), 400
 
-    start_time = time.time()
-
     try:
-        faculty_with_interests, faculty_without = get_faculty_for_matching()
-        requirements = extract_grant_requirements(text)
-        matches = match_faculty(requirements, faculty_with_interests)
+        faculty = get_faculty_data()["faculty"]
+        results = process_grant(text, faculty)
     except Exception:
         logger.exception("Grant processing failed")
         return jsonify({"error": "Failed to analyze the grant document. Please try again."}), 500
 
-    elapsed = time.time() - start_time
-
-    # Log the match to the audit trail
-    try:
-        audit = MatchAudit(
-            grant_filename=file.filename,
-            grant_title=requirements.get("grant_title"),
-            funding_agency=requirements.get("funding_agency"),
-            grant_requirements=requirements,
-            results=matches,
-            faculty_count=len(faculty_with_interests),
-            model_used=os.getenv("LITELLM_MODEL", "api-gpt-oss-120b"),
-            processing_seconds=round(elapsed, 2),
-        )
-        db.session.add(audit)
-        db.session.commit()
-    except Exception:
-        logger.exception("Failed to log match audit")
-        db.session.rollback()
-
-    return jsonify({
-        "grant_summary": requirements,
-        "matches": matches,
-        "faculty_without_interests_count": len(faculty_without),
-        "total_faculty_considered": len(faculty_with_interests),
-    })
-
-
-@app.route("/api/faculty", methods=["GET"])
-def list_faculty():
-    """List all faculty with optional search."""
-    from utils.faculty_repository import get_all_faculty, search_faculty
-
-    q = request.args.get("q")
-    if q:
-        return jsonify(search_faculty(q))
-    return jsonify(get_all_faculty())
-
-
-@app.route("/api/faculty/<int:faculty_id>", methods=["GET"])
-def get_faculty(faculty_id):
-    """Get a single faculty member."""
-    from utils.faculty_repository import get_faculty_by_id
-
-    result = get_faculty_by_id(faculty_id)
-    if not result:
-        return jsonify({"error": "Faculty not found"}), 404
-    return jsonify(result)
+    return jsonify(results)
 
 
 @app.errorhandler(413)
