@@ -72,7 +72,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    dropZone.addEventListener("click", () => fileInput.click());
+    dropZone.addEventListener("click", (e) => {
+        // Avoid double-triggering when clicking the label (which natively opens the file picker)
+        if (e.target.closest(".file-btn")) return;
+        fileInput.click();
+    });
     fileInput.addEventListener("change", () => {
         if (fileInput.files.length > 0) setFile(fileInput.files[0]);
     });
