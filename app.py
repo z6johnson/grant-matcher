@@ -80,18 +80,49 @@ def faculty_directory():
     data = get_faculty_data(dept)
     faculty = data.get("faculty", [])
 
-    # Return only the fields needed for directory display
+    query = request.args.get("q", "").strip().lower()
+    limit = min(int(request.args.get("limit", 20)), 50)
+    offset = int(request.args.get("offset", 0))
+
+    # Build filtered list with only the directory fields
     result = []
     for f in faculty:
+        if not (f.get("first_name") and f.get("last_name")):
+            continue
+
+        # If there's a query, check if all terms match
+        if query:
+            searchable = _get_searchable_text(f)
+            terms = query.split()
+            if not all(t in searchable for t in terms):
+                continue
+
         entry = {}
         for field in FACULTY_DIRECTORY_FIELDS:
             if field in f:
                 entry[field] = f[field]
-        # Only include faculty with at least a name
-        if entry.get("first_name") and entry.get("last_name"):
-            result.append(entry)
+        result.append(entry)
 
-    return jsonify(result)
+    total = len(result)
+    page = result[offset:offset + limit]
+
+    return jsonify({"results": page, "total": total, "offset": offset, "limit": limit})
+
+
+def _get_searchable_text(f):
+    """Build a single lowercase string of all searchable fields for a faculty member."""
+    parts = [
+        f.get("first_name", ""), f.get("last_name", ""),
+        f.get("title", ""),
+        f.get("research_interests", ""),
+        f.get("research_interests_enriched", ""),
+        *f.get("expertise_keywords", []),
+        *f.get("disease_areas", []),
+        *f.get("methodologies", []),
+        *f.get("populations", []),
+        *f.get("committee_service", []),
+    ]
+    return " ".join(parts).lower()
 
 
 @app.route("/api/match", methods=["POST"])

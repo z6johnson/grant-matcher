@@ -20,10 +20,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Directory mode
     const expertSearch = document.getElementById("expert-search");
+    const expertSearchBtn = document.getElementById("expert-search-btn");
     const activeFiltersEl = document.getElementById("active-filters");
     const expertCount = document.getElementById("expert-count");
     const expertList = document.getElementById("expert-list");
     const directoryLoading = document.getElementById("directory-loading");
+    const directoryEmpty = document.getElementById("directory-empty");
+    const directoryResults = document.getElementById("directory-results");
+    const loadMoreBtn = document.getElementById("load-more-btn");
 
     // Shared views
     const processingView = document.getElementById("processing-view");
@@ -39,9 +43,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let selectedFile = null;
     let lastResults = null;
-    let facultyData = null;
     let activeFilters = [];
     let activeTab = "upload";
+
+    // Directory search state
+    let directorySearchResults = [];
+    let directoryTotal = 0;
+    let directoryOffset = 0;
+    const DIRECTORY_PAGE_SIZE = 20;
 
     // ===========================================
     // TAB MANAGEMENT
@@ -60,9 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
         // Hide shared views when switching tabs
         hideSharedViews();
 
-        // Load faculty data when switching to directory for the first time
-        if (tabId === "directory" && !facultyData) {
-            loadFacultyData();
+        // Focus search when switching to directory
+        if (tabId === "directory") {
+            setTimeout(() => expertSearch.focus(), 100);
         }
     }
 
@@ -237,72 +246,84 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ===========================================
-    // MODE 3: EXPERT DIRECTORY
+    // MODE 3: EXPERT DIRECTORY (search-driven)
     // ===========================================
 
-    async function loadFacultyData() {
-        directoryLoading.hidden = false;
-        try {
-            const response = await fetch(API_BASE + "/api/faculty");
-            if (!response.ok) throw new Error("Failed to load faculty directory");
-            facultyData = await response.json();
+    function buildSearchQuery() {
+        const search = expertSearch.value.trim();
+        const parts = [];
+        if (search) parts.push(search);
+        activeFilters.forEach(f => parts.push(f));
+        return parts.join(" ");
+    }
+
+    async function searchFaculty(append) {
+        const query = buildSearchQuery();
+        if (!query) {
+            // No query — show empty state
+            directoryEmpty.hidden = false;
+            directoryResults.hidden = true;
             directoryLoading.hidden = true;
-            renderExpertList();
-        } catch (err) {
-            directoryLoading.hidden = true;
-            expertList.innerHTML = '<div class="card"><p>Could not load faculty directory. Please try again.</p></div>';
-        }
-    }
-
-    function getSearchableText(f) {
-        const parts = [
-            f.first_name, f.last_name,
-            f.title || "",
-            f.research_interests || "",
-            f.research_interests_enriched || "",
-            ...(f.expertise_keywords || []),
-            ...(f.disease_areas || []),
-            ...(f.methodologies || []),
-            ...(f.populations || []),
-            ...(f.committee_service || [])
-        ];
-        return parts.join(" ").toLowerCase();
-    }
-
-    function filterFaculty() {
-        if (!facultyData) return [];
-        const query = expertSearch.value.trim().toLowerCase();
-        const terms = query ? query.split(/\s+/) : [];
-
-        return facultyData.filter(f => {
-            const text = getSearchableText(f);
-
-            // Must match all search terms
-            const matchesSearch = terms.length === 0 || terms.every(t => text.includes(t));
-
-            // Must match all active filter chips
-            const matchesFilters = activeFilters.length === 0 ||
-                activeFilters.every(filter => text.includes(filter.toLowerCase()));
-
-            return matchesSearch && matchesFilters;
-        });
-    }
-
-    function renderExpertList() {
-        const filtered = filterFaculty();
-        expertCount.textContent = `${filtered.length} faculty${filtered.length !== facultyData.length ? ` of ${facultyData.length}` : ""}`;
-
-        if (filtered.length === 0) {
-            expertList.innerHTML = '<div class="card"><p style="color:var(--gray-500);font-size:var(--text-small);">No faculty match the current search criteria.</p></div>';
             return;
         }
 
-        expertList.innerHTML = filtered.map((f, idx) => buildExpertCard(f, idx)).join("");
+        if (!append) {
+            directoryOffset = 0;
+            directorySearchResults = [];
+        }
+
+        directoryEmpty.hidden = true;
+        directoryLoading.hidden = false;
+        if (!append) directoryResults.hidden = true;
+
+        try {
+            const params = new URLSearchParams({
+                q: query,
+                limit: DIRECTORY_PAGE_SIZE,
+                offset: directoryOffset
+            });
+            const response = await fetch(API_BASE + "/api/faculty?" + params);
+            if (!response.ok) throw new Error("Search failed");
+            const data = await response.json();
+
+            directoryTotal = data.total;
+            directorySearchResults = append
+                ? directorySearchResults.concat(data.results)
+                : data.results;
+
+            directoryLoading.hidden = true;
+            directoryResults.hidden = false;
+            renderExpertList();
+        } catch (err) {
+            directoryLoading.hidden = true;
+            directoryResults.hidden = false;
+            expertList.innerHTML = '<div class="card"><p>Search failed. Please try again.</p></div>';
+        }
+    }
+
+    function renderExpertList() {
+        const results = directorySearchResults;
+        const showing = results.length;
+        const total = directoryTotal;
+
+        expertCount.textContent = total === 0
+            ? "No results"
+            : `Showing ${showing} of ${total} result${total !== 1 ? "s" : ""}`;
+
+        if (results.length === 0) {
+            expertList.innerHTML = '<div class="card"><p style="color:var(--gray-500);font-size:var(--text-small);">No faculty match your search. Try different keywords or broader terms.</p></div>';
+            loadMoreBtn.hidden = true;
+            return;
+        }
+
+        expertList.innerHTML = results.map(f => buildExpertCard(f)).join("");
+
+        // Show/hide load more
+        loadMoreBtn.hidden = showing >= total;
 
         // Attach click handlers for expand/collapse
         expertList.querySelectorAll(".expert-card").forEach(card => {
             card.addEventListener("click", (e) => {
-                // Don't toggle if clicking a link or tag
                 if (e.target.closest("a") || e.target.closest(".tag")) return;
                 card.classList.toggle("expanded");
             });
@@ -316,7 +337,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (!activeFilters.includes(keyword)) {
                     activeFilters.push(keyword);
                     renderActiveFilters();
-                    renderExpertList();
+                    searchFaculty(false);
                 }
             });
         });
@@ -336,7 +357,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let detailsHtml = "";
 
-        // Research summary
         if (research) {
             detailsHtml += `
                 <div class="expert-section">
@@ -345,7 +365,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>`;
         }
 
-        // Meta grid: disease areas, methods, populations
         const metaParts = [];
         if (diseaseAreas.length > 0) {
             metaParts.push(`<div class="expert-meta-item"><strong>Disease Areas</strong><br>${escapeHtml(diseaseAreas.join(", "))}</div>`);
@@ -363,7 +382,6 @@ document.addEventListener("DOMContentLoaded", () => {
             detailsHtml += `<div class="expert-section"><div class="expert-meta-grid">${metaParts.join("")}</div></div>`;
         }
 
-        // Committee service
         if (committees.length > 0) {
             detailsHtml += `
                 <div class="expert-section expert-committee">
@@ -372,7 +390,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>`;
         }
 
-        // Funded grants (show up to 3)
         if (grants.length > 0) {
             const grantItems = grants.slice(0, 3).map(g =>
                 `<li>${escapeHtml(g.title || "Untitled")} <span class="grant-agency">${escapeHtml(g.agency || "")}${g.start_date ? " (" + g.start_date + (g.end_date ? "–" + g.end_date : "") + ")" : ""}</span></li>`
@@ -384,7 +401,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>`;
         }
 
-        // Recent publications (show up to 3)
         if (pubs.length > 0) {
             const pubItems = pubs.slice(0, 3).map(p =>
                 `<li>${escapeHtml(p.title || "Untitled")} <span class="pub-journal">${escapeHtml(p.journal || "")}${p.year ? " (" + p.year + ")" : ""}</span></li>`
@@ -396,7 +412,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>`;
         }
 
-        // Contact & links
         let contactHtml = "";
         if (f.email) {
             contactHtml += `<span class="expert-email"><a href="mailto:${escapeHtml(f.email)}">${escapeHtml(f.email)}</a></span>`;
@@ -428,13 +443,32 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>`;
     }
 
-    // Search handler with debounce
-    let searchTimeout = null;
-    expertSearch.addEventListener("input", () => {
-        clearTimeout(searchTimeout);
-        searchTimeout = setTimeout(() => {
-            renderExpertList();
-        }, 200);
+    // Search triggers
+    function triggerSearch() {
+        searchFaculty(false);
+    }
+
+    expertSearchBtn.addEventListener("click", triggerSearch);
+
+    expertSearch.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+            e.preventDefault();
+            triggerSearch();
+        }
+    });
+
+    // Load more pagination
+    loadMoreBtn.addEventListener("click", () => {
+        directoryOffset += DIRECTORY_PAGE_SIZE;
+        searchFaculty(true);
+    });
+
+    // Suggested search chips
+    document.querySelectorAll(".suggested-chip").forEach(chip => {
+        chip.addEventListener("click", () => {
+            expertSearch.value = chip.dataset.query;
+            triggerSearch();
+        });
     });
 
     // Active filters
@@ -448,7 +482,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 const idx = parseInt(chip.dataset.index);
                 activeFilters.splice(idx, 1);
                 renderActiveFilters();
-                renderExpertList();
+                if (buildSearchQuery()) {
+                    searchFaculty(false);
+                } else {
+                    directoryEmpty.hidden = false;
+                    directoryResults.hidden = true;
+                }
             });
         });
     }

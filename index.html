@@ -73,22 +73,43 @@
 
         <!-- Tab 3: Expert Directory -->
         <section id="tab-directory" class="tab-panel">
-            <div class="card directory-header-card">
-                <h2>Expert Directory</h2>
-                <p class="help-text">Search and filter faculty by expertise, research methods, disease areas, or populations studied.</p>
-                <div class="search-bar">
-                    <input type="search" id="expert-search" class="search-input" placeholder="Search by name, expertise, methods, disease area, population...">
+            <div class="directory-search-wrapper">
+                <div class="directory-search-box">
+                    <input type="search" id="expert-search" class="directory-search-input" placeholder="Search faculty by name, expertise, method, disease area..." autocomplete="off">
+                    <button id="expert-search-btn" class="btn btn-primary directory-search-btn">Search</button>
                 </div>
                 <div id="active-filters" class="active-filters"></div>
             </div>
 
-            <div id="directory-loading" class="card processing-card" hidden>
-                <div class="spinner"></div>
-                <p class="status-text">Loading faculty directory</p>
+            <!-- Empty state: shown before any search -->
+            <div id="directory-empty" class="directory-empty-state">
+                <div class="empty-state-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </div>
+                <p class="empty-state-heading">Find faculty expertise</p>
+                <p class="empty-state-sub">Search across all faculty by research area, methodology, disease focus, or name.</p>
+                <div class="suggested-searches">
+                    <span class="suggested-label">Try</span>
+                    <button class="suggested-chip" data-query="machine learning">machine learning</button>
+                    <button class="suggested-chip" data-query="cardiovascular">cardiovascular</button>
+                    <button class="suggested-chip" data-query="health disparities">health disparities</button>
+                    <button class="suggested-chip" data-query="epidemiology">epidemiology</button>
+                    <button class="suggested-chip" data-query="clinical trials">clinical trials</button>
+                </div>
             </div>
 
-            <div id="expert-count" class="expert-count"></div>
-            <div id="expert-list" class="expert-list"></div>
+            <!-- Loading state -->
+            <div id="directory-loading" class="card processing-card" hidden>
+                <div class="spinner"></div>
+                <p class="status-text">Searching faculty</p>
+            </div>
+
+            <!-- Results -->
+            <div id="directory-results" hidden>
+                <div id="expert-count" class="expert-count"></div>
+                <div id="expert-list" class="expert-list"></div>
+                <button id="load-more-btn" class="btn btn-outline load-more-btn" hidden>Show more results</button>
+            </div>
         </section>
 
         <!-- Shared: Processing View -->

@@ -385,6 +385,119 @@ main {
     opacity: 1;
 }
 
+/* ——— Directory search wrapper ——— */
+
+.directory-search-wrapper {
+    margin-bottom: var(--space-3);
+}
+
+.directory-search-box {
+    display: flex;
+    gap: 0;
+}
+
+.directory-search-input {
+    flex: 1;
+    padding: 12px var(--space-2);
+    border: var(--border-heavy);
+    border-right: none;
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    color: var(--gray-900);
+    transition: border-color var(--transition);
+}
+
+.directory-search-input:focus {
+    outline: none;
+}
+
+.directory-search-input::placeholder {
+    color: var(--gray-400);
+}
+
+.directory-search-btn {
+    width: auto;
+    margin-top: 0;
+    padding: 12px var(--space-3);
+    border: var(--border-heavy);
+    white-space: nowrap;
+}
+
+/* ——— Empty state ——— */
+
+.directory-empty-state {
+    text-align: center;
+    padding: var(--space-8) var(--space-4) var(--space-6);
+}
+
+.empty-state-icon {
+    margin-bottom: var(--space-3);
+}
+
+.empty-state-icon svg {
+    width: 48px;
+    height: 48px;
+    color: var(--gray-300);
+}
+
+.empty-state-heading {
+    font-size: var(--text-heading);
+    font-weight: 700;
+    color: var(--gray-700);
+    margin-bottom: var(--space-1);
+}
+
+.empty-state-sub {
+    font-size: var(--text-small);
+    color: var(--gray-400);
+    max-width: 420px;
+    margin: 0 auto var(--space-4);
+    line-height: 1.5;
+}
+
+.suggested-searches {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-1);
+}
+
+.suggested-label {
+    font-size: var(--text-label);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--gray-400);
+}
+
+.suggested-chip {
+    display: inline-block;
+    padding: 4px 12px;
+    border: 1px solid var(--gray-200);
+    background: var(--white);
+    font-family: var(--font-sans);
+    font-size: var(--text-small);
+    font-weight: 500;
+    color: var(--gray-700);
+    cursor: pointer;
+    transition: border-color var(--transition), color var(--transition);
+}
+
+.suggested-chip:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/* ——— Load more ——— */
+
+.load-more-btn {
+    display: block;
+    width: 100%;
+    margin-top: var(--space-2);
+    text-align: center;
+}
+
 /* ——— Expert count ——— */
 
 .expert-count {
@@ -1070,5 +1183,22 @@ footer {
 
     .expert-meta-grid {
         grid-template-columns: 1fr;
+    }
+
+    .directory-search-box {
+        flex-direction: column;
+    }
+
+    .directory-search-input {
+        border-right: var(--border-heavy);
+        border-bottom: none;
+    }
+
+    .directory-search-btn {
+        width: 100%;
+    }
+
+    .suggested-searches {
+        gap: 6px;
     }
 }
