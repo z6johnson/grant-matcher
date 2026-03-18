@@ -451,7 +451,8 @@ main {
 }
 
 .directory-search-input {
-    flex: 1;
+    flex: 1 1 0%;
+    min-width: 0;
     padding: 12px var(--space-2);
     border: var(--border-heavy);
     border-right: none;
@@ -470,9 +471,10 @@ main {
 }
 
 .directory-search-btn {
+    flex: 0 0 auto;
     width: auto;
     margin-top: 0;
-    padding: 12px var(--space-3);
+    padding: 12px var(--space-4);
     border: var(--border-heavy);
     white-space: nowrap;
 }

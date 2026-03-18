@@ -32,6 +32,7 @@ SOURCE_CLASSES = {
     "nih_reporter": NIHReporterSource,
     "pubmed": PubMedSource,
     "orcid": ORCIDSource,
+    "semantic_scholar": SemanticScholarSource,
 }
 
 # Sources for Scripps Institution of Oceanography faculty
