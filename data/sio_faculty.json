@@ -185,19 +185,82 @@
       ],
       "email": "",
       "research_interests": "",
-      "research_interests_enriched": "",
-      "expertise_keywords": [],
-      "methodologies": [],
-      "disease_areas": [],
-      "populations": [],
+      "research_interests_enriched": "Dr. Sutanu Sarkar focuses on the molecular mechanisms of DNA double‑strand break repair, especially classical non‑homologous end‑joining, and how impairments in these pathways drive neurodegenerative diseases such as spinocerebellar ataxia type 3. His work integrates genetically engineered mouse models, aging studies, and advanced molecular assays to link genome instability with brain pathology.",
+      "expertise_keywords": [
+        "non‑homologous end joining",
+        "DNA double‑strand break repair",
+        "transcription‑coupled repair",
+        "Ataxin‑3",
+        "spinocerebellar ataxia type 3",
+        "neurodegeneration",
+        "genome stability",
+        "aging",
+        "mouse models",
+        "genetically modified animals"
+      ],
+      "methodologies": [
+        "CRISPR/Cas9 genome editing",
+        "mouse genetics / transgenic models",
+        "DNA repair reporter assays",
+        "comet assay",
+        "immunoblotting",
+        "immunohistochemistry",
+        "RNA‑seq / transcriptomics",
+        "behavioral phenotyping",
+        "histological analysis"
+      ],
+      "disease_areas": [
+        "spinocerebellar ataxia type 3",
+        "ataxia",
+        "neurodegenerative disorders",
+        "age‑related brain disease"
+      ],
+      "populations": [
+        "genetically engineered mouse models",
+        "aged animal cohorts"
+      ],
       "funded_grants": [],
-      "recent_publications": [],
+      "recent_publications": [
+        {
+          "title": "Deficiency in classical nonhomologous end-joining-mediated repair of transcribed genes is linked to SCA3 pathogenesis.",
+          "year": 2020,
+          "journal": "Proceedings of the National Academy of Sciences of the United States of America",
+          "mesh_terms": [
+            "Aged, 80 and over",
+            "Animals",
+            "Animals, Genetically Modified",
+            "Ataxin-3",
+            "Brain",
+            "Cell Line",
+            "DNA Breaks, Double-Stranded",
+            "DNA End-Joining Repair",
+            "DNA Repair Enzymes",
+            "Disease Models, Animal",
+            "Drosophila",
+            "Female",
+            "Gene Knockdown Techniques",
+            "Humans",
+            "Induced Pluripotent Stem Cells",
+            "Machado-Joseph Disease",
+            "Male",
+            "Mice",
+            "Middle Aged",
+            "Mutation",
+            "Peptides",
+            "Phosphotransferases (Alcohol Group Acceptor)",
+            "RNA Polymerase II",
+            "RNA, Small Interfering",
+            "Repressor Proteins"
+          ],
+          "abstract": "Spinocerebellar ataxia type 3 (SCA3) is a dominantly inherited neurodegenerative disease caused by CAG (encoding glutamine) repeat expansion in the Ataxin-3 ("
+        }
+      ],
       "profile_url": "",
       "orcid": "",
       "h_index": null,
       "committee_service": [],
       "integrity_flags": [],
-      "last_enriched": null
+      "last_enriched": "2026-03-18T18:46:48.492764+00:00"
     }
   ]
 }
