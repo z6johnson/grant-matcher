@@ -24,7 +24,7 @@ class ScrippsProfileSource(BaseSource):
     SCRIPPS_PEOPLE_URL = "https://scripps.ucsd.edu/people"
 
     def fields_provided(self):
-        return ["research_interests_enriched", "profile_url"]
+        return ["research_interests_enriched", "profile_url", "email"]
 
     def fetch(self, faculty_dict):
         """Try multiple Scripps/UCSD sources to find profile data."""
@@ -92,9 +92,14 @@ class ScrippsProfileSource(BaseSource):
         return None
 
     def _parse_profile_page(self, html, profile_url):
-        """Extract research description from a profile page."""
+        """Extract research description and email from a profile page."""
         soup = BeautifulSoup(html, "html.parser")
         data = {"profile_url": profile_url}
+
+        # --- Email extraction ---
+        email = self._extract_email_from_page(soup)
+        if email:
+            data["email"] = email
 
         research_text_parts = []
 
@@ -123,7 +128,34 @@ class ScrippsProfileSource(BaseSource):
                 combined = combined[:2000]
             data["research_interests_enriched"] = combined
 
-        return data if "research_interests_enriched" in data else None
+        # Return data if we found email or research interests
+        if "research_interests_enriched" in data or "email" in data:
+            return data
+        return None
+
+    @staticmethod
+    def _extract_email_from_page(soup):
+        """Extract a ucsd.edu email address from a profile page."""
+        import re
+
+        # Strategy 1: mailto: links
+        for link in soup.find_all("a", href=True):
+            href = link["href"]
+            if href.startswith("mailto:"):
+                addr = href.replace("mailto:", "").split("?")[0].strip().lower()
+                if addr and "ucsd.edu" in addr:
+                    return addr
+
+        # Strategy 2: Regex scan for ucsd.edu addresses
+        email_pattern = re.compile(
+            r"[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]*ucsd\.edu",
+        )
+        full_text = soup.get_text()
+        match = email_pattern.search(full_text)
+        if match:
+            return match.group(0).lower()
+
+        return None
 
 
 def discover_sio_faculty_from_catalog():

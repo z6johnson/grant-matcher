@@ -62,7 +62,7 @@ JACOBS_SOURCE_CLASSES = {
 ALL_SOURCE_CLASSES = {**SOURCE_CLASSES, **SIO_SOURCE_CLASSES, **JACOBS_SOURCE_CLASSES}
 
 # Fields that can be directly written to a faculty record (non-JSON)
-DIRECT_FIELDS = {"profile_url", "orcid", "google_scholar_id", "h_index"}
+DIRECT_FIELDS = {"profile_url", "orcid", "google_scholar_id", "h_index", "email"}
 
 # Fields that are JSON arrays and should be replaced wholesale
 JSON_FIELDS = {"funded_grants", "recent_publications", "expertise_keywords"}
@@ -240,7 +240,7 @@ def enrich_faculty(faculty_index, sources=None, dry_run=False, department=None,
 
             if field in DIRECT_FIELDS or field in JSON_FIELDS:
                 old_value = faculty_dict.get(field)
-                if old_value is not None and field not in JSON_FIELDS:
+                if old_value and field not in JSON_FIELDS:
                     continue  # Don't overwrite existing direct fields
 
                 faculty_dict[field] = value
