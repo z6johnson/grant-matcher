@@ -13,6 +13,9 @@ from .base import BaseSource
 
 logger = logging.getLogger(__name__)
 
+# Regex for @ucsd.edu addresses, reused across methods
+_EMAIL_RE = re.compile(r"[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]*ucsd\.edu")
+
 
 class UCSDProfileSource(BaseSource):
     source_name = "ucsd_profile"
@@ -28,10 +31,60 @@ class UCSDProfileSource(BaseSource):
         "info@ucsd.edu",
         "webmaster@ucsd.edu",
         "jacobsschool@ucsd.edu",
+        "hwsph-grants@ucsd.edu",
+        "admissions@ucsd.edu",
+        "registrar@ucsd.edu",
+    })
+
+    # Common generic local-part prefixes that are never personal
+    _GENERIC_PREFIXES = frozenset({
+        "info", "support", "admin", "admissions", "help", "contact",
+        "office", "dept", "department", "registrar", "webmaster",
+        "grants", "ctri-support", "communications", "events",
     })
 
     def fields_provided(self):
         return ["research_interests_enriched", "profile_url", "email"]
+
+    @classmethod
+    def _is_plausible_faculty_email(cls, email, first_name, last_name):
+        """Check whether *email* plausibly belongs to this faculty member.
+
+        Heuristic: the local part (before @) should contain at least a
+        3-character prefix of the first or last name, **or** the first initial.
+        This catches patterns like ``jsmith@``, ``j3smith@``, ``smithj@``,
+        ``john.smith@``, and the common UCSD ``abc123@`` (initials + digits)
+        format.
+
+        Generic prefixes (``info``, ``support``, etc.) are always rejected,
+        even if they happen to overlap with a name fragment.
+        """
+        local = email.split("@")[0].lower().replace(".", "").replace("-", "")
+        first = first_name.lower()
+        last = last_name.lower()
+
+        # Reject known generic prefixes
+        raw_local = email.split("@")[0].lower()
+        if raw_local in cls._GENERIC_PREFIXES:
+            return False
+
+        # Accept if first initial is present AND any part of last name (≥3 chars)
+        has_first_initial = first and first[0] in local
+        has_last_fragment = last and len(last) >= 3 and last[:3] in local
+
+        # Accept if a ≥3-char prefix of first or last name appears
+        has_first_fragment = first and len(first) >= 3 and first[:3] in local
+        has_name_signal = has_last_fragment or has_first_fragment or (has_first_initial and has_last_fragment)
+
+        if has_name_signal:
+            return True
+
+        # Accept single-initial + digits pattern (e.g. j4smith, abc012) if
+        # at least the first initial matches
+        if has_first_initial and re.match(r"[a-z]{1,3}\d+", local):
+            return True
+
+        return False
 
     def fetch(self, faculty_dict):
         """Scrape the UCSD profiles page for this faculty member."""
@@ -51,6 +104,15 @@ class UCSDProfileSource(BaseSource):
             if email:
                 profile_data["email"] = email
 
+        # Validate any email we found against the faculty name
+        if profile_data and profile_data.get("email"):
+            if not self._is_plausible_faculty_email(profile_data["email"], first, last):
+                logger.warning(
+                    "Dropping implausible email %s for %s %s",
+                    profile_data["email"], first, last,
+                )
+                del profile_data["email"]
+
         if profile_data:
             return profile_data
 
@@ -63,6 +125,14 @@ class UCSDProfileSource(BaseSource):
             email = self._search_jacobsschool_profile(first, last)
             if email:
                 data["email"] = email
+
+        # Validate fallback email too
+        if data.get("email") and not self._is_plausible_faculty_email(data["email"], first, last):
+            logger.warning(
+                "Dropping implausible fallback email %s for %s %s",
+                data["email"], first, last,
+            )
+            del data["email"]
 
         # Fallback: try hwsph directory page scrape (for HWSPH faculty)
         if not data:
@@ -150,14 +220,32 @@ class UCSDProfileSource(BaseSource):
     def _extract_email_from_page(cls, soup):
         """Extract a ucsd.edu email address from a profile page.
 
-        Tries multiple strategies:
-        1. mailto: links
-        2. Structured contact info sections
-        3. Regex scan of page text for ucsd.edu addresses
+        Tries multiple strategies in order of reliability:
+        1. mailto: links within the main content area
+        2. mailto: links anywhere on the page
+        3. Regex scan within contact/info sections only
 
         Filters out known generic/support addresses (BLOCKED_EMAILS).
+        Does NOT do a full-page regex scan — that is the source of most
+        false positives (footer links, sidebar widgets, etc.).
         """
-        # Strategy 1: mailto: links (most reliable)
+        # Identify the main content area to prefer over page chrome
+        content_area = (
+            soup.find("main")
+            or soup.find(id=re.compile(r"content|main|profile", re.I))
+            or soup.find(class_=re.compile(r"content|main|profile", re.I))
+            or soup  # fall back to whole page for Strategy 1–2
+        )
+
+        # Strategy 1: mailto: links in main content area (most reliable)
+        for link in content_area.find_all("a", href=True):
+            href = link["href"]
+            if href.startswith("mailto:"):
+                addr = href.replace("mailto:", "").split("?")[0].strip().lower()
+                if addr and "ucsd.edu" in addr and addr not in cls.BLOCKED_EMAILS:
+                    return addr
+
+        # Strategy 2: mailto: links anywhere on page (catches nav/sidebar contact)
         for link in soup.find_all("a", href=True):
             href = link["href"]
             if href.startswith("mailto:"):
@@ -165,25 +253,25 @@ class UCSDProfileSource(BaseSource):
                 if addr and "ucsd.edu" in addr and addr not in cls.BLOCKED_EMAILS:
                     return addr
 
-        # Strategy 2: Look for email in contact/info sections
-        email_pattern = re.compile(
-            r"[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]*ucsd\.edu",
+        # Strategy 3: Regex scan scoped to contact/info sections only
+        contact_sections = content_area.find_all(
+            ["span", "p", "div", "li"],
+            string=re.compile(r"email|contact|e-mail", re.I),
         )
-        for el in soup.find_all(["span", "p", "div", "a", "li"]):
-            el_text = el.get_text(strip=True)
-            match = email_pattern.search(el_text)
+        # Also check elements near headings that mention "contact"
+        for heading in content_area.find_all(["h2", "h3", "h4", "dt", "label"]):
+            if re.search(r"contact|email", heading.get_text(strip=True), re.I):
+                for sib in heading.find_next_siblings():
+                    if sib.name in ("h2", "h3", "h4"):
+                        break
+                    contact_sections.append(sib)
+
+        for el in contact_sections:
+            match = _EMAIL_RE.search(el.get_text())
             if match:
                 addr = match.group(0).lower()
                 if addr not in cls.BLOCKED_EMAILS:
                     return addr
-
-        # Strategy 3: Full-page regex (last resort)
-        full_text = soup.get_text()
-        match = email_pattern.search(full_text)
-        if match:
-            addr = match.group(0).lower()
-            if addr not in cls.BLOCKED_EMAILS:
-                return addr
 
         return None
 
@@ -201,35 +289,27 @@ class UCSDProfileSource(BaseSource):
             return None
 
         soup = BeautifulSoup(resp.text, "html.parser")
-        full_name_lower = f"{first_name} {last_name}".lower()
-
-        email_pattern = re.compile(
-            r"[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]*ucsd\.edu",
-        )
 
         # Look for result rows/cards containing this person's name
         for container in soup.find_all(["tr", "div", "li", "article"]):
             text = container.get_text(strip=True).lower()
             if first_name.lower() in text and last_name.lower() in text:
-                # Found a matching entry — look for email
+                # Found a matching entry — prefer mailto: links
                 for link in container.find_all("a", href=True):
                     href = link["href"]
                     if href.startswith("mailto:"):
                         addr = href.replace("mailto:", "").split("?")[0].strip().lower()
-                        if "ucsd.edu" in addr:
+                        if "ucsd.edu" in addr and addr not in self.BLOCKED_EMAILS:
                             return addr
-                match = email_pattern.search(container.get_text())
+                # Fall back to regex within this name-matched container only
+                match = _EMAIL_RE.search(container.get_text())
                 if match:
-                    return match.group(0).lower()
+                    addr = match.group(0).lower()
+                    if addr not in self.BLOCKED_EMAILS:
+                        return addr
 
-        # Broader scan: any ucsd.edu email near the person's name on the page
-        full_text = soup.get_text()
-        # Find all email addresses on the page
-        all_emails = email_pattern.findall(full_text)
-        if len(all_emails) == 1:
-            # If there's exactly one result, it's likely our person
-            return all_emails[0].lower()
-
+        # Do NOT fall back to a broad page scan — that is how generic
+        # emails (ctri-support, etc.) leak into faculty records.
         return None
 
     def _search_jacobsschool_profile(self, first_name, last_name):
