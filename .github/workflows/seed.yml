@@ -1,0 +1,86 @@
+name: Seed Faculty Roster
+
+on:
+  workflow_dispatch:
+    inputs:
+      school:
+        description: "School to seed"
+        required: true
+        type: choice
+        options:
+          - sio
+          - jacobs
+      strategy:
+        description: "Discovery strategy"
+        required: false
+        type: choice
+        options:
+          - all
+          - catalog
+          - directory
+          - profiles
+        default: all
+      dry_run:
+        description: "Preview without writing"
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  seed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Validate strategy for school
+        run: |
+          SCHOOL="${{ inputs.school }}"
+          STRATEGY="${{ inputs.strategy }}"
+          # SIO supports: all, catalog, profiles
+          # Jacobs supports: all, directory, catalog
+          if [ "$SCHOOL" = "sio" ] && [ "$STRATEGY" = "directory" ]; then
+            echo "::error::SIO does not support the 'directory' strategy. Use 'catalog', 'profiles', or 'all'."
+            exit 1
+          fi
+          if [ "$SCHOOL" = "jacobs" ] && [ "$STRATEGY" = "profiles" ]; then
+            echo "::error::Jacobs does not support the 'profiles' strategy. Use 'directory', 'catalog', or 'all'."
+            exit 1
+          fi
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Seed faculty roster
+        run: |
+          args="--strategy ${{ inputs.strategy }}"
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            args="$args --dry-run"
+          fi
+          python enrichment/seed_${{ inputs.school }}.py $args
+
+      - name: Commit seeded data
+        if: inputs.dry_run != true
+        run: |
+          SCHOOL="${{ inputs.school }}"
+          if [ "$SCHOOL" = "sio" ]; then
+            DATA_FILE="data/sio_faculty.json"
+          elif [ "$SCHOOL" = "jacobs" ]; then
+            DATA_FILE="data/jacobs_faculty.json"
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "$DATA_FILE"
+          git diff --staged --quiet || git commit -m "chore: seed ${{ inputs.school }} faculty roster ($(date -u +%Y-%m-%d))"
+          git push

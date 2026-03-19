@@ -1,6 +1,6 @@
 # Research Alignment
 
-AI-powered faculty expertise discovery tool for UC San Diego's Herbert Wertheim School of Public Health. Identify faculty whose research expertise aligns with funding opportunity requirements through three interaction modes.
+AI-powered faculty expertise discovery tool for UC San Diego. Covers three schools — Herbert Wertheim School of Public Health (HWSPH), Scripps Institution of Oceanography (SIO), and Jacobs School of Engineering. Identify faculty whose research expertise aligns with funding opportunity requirements through three interaction modes.
 
 ## How It Works
 
@@ -117,6 +117,17 @@ Same as HWSPH, plus:
 
 SIO uses Scripps Profiles instead of UCSD Profiles, and adds NSF Awards. NIH RePORTER, PubMed, ORCID, and Semantic Scholar are shared.
 
+#### Jacobs (School of Engineering) Sources
+
+Same as HWSPH, plus NSF Awards:
+
+| Source | Confidence | API | Auth Required | Rate Limit | Fields Provided |
+|--------|-----------|-----|---------------|------------|-----------------|
+| **UCSD Profiles** | 1.0 | Web scrape (`profiles.ucsd.edu`) | No | 1 req/2s | `research_interests_enriched`, `profile_url` |
+| **NSF Awards** | 0.8 | REST (`api.nsf.gov/services/v1`) | No | 1 req/s | `funded_grants` |
+
+Jacobs uses UCSD Profiles (like HWSPH) and adds NSF Awards (like SIO). NIH RePORTER, PubMed, ORCID, and Semantic Scholar are shared.
+
 ### Source Details
 
 **UCSD Profiles / Scripps Profiles** — Scrapes `profiles.ucsd.edu` by searching for the faculty member's name, then parses the profile page for research descriptions, overview sections, and biography text. UCSD Profiles falls back to the HWSPH faculty directory page if the profile search fails. Scripps Profiles additionally tries `scripps.ucsd.edu/profiles/{slug}` with multiple slug patterns.
@@ -168,11 +179,18 @@ Every field change from enrichment is recorded in `data/enrichment_log.json` —
 
 ### Schedule
 
-Enrichment runs via GitHub Actions (`.github/workflows/enrich.yml`):
+All workflows live in `.github/workflows/` and are consolidated into two files:
+
+**Enrichment** (`enrich.yml`) — runs weekly, staggered to avoid overlap:
 - **HWSPH:** Every Sunday at midnight UTC
 - **SIO:** Every Sunday at 2:00 AM UTC
+- **Jacobs:** Every Sunday at 4:00 AM UTC
 
-Manual runs are available via `workflow_dispatch` with options to specify department, sources, faculty indices, and dry-run mode. Vercel auto-deploys when enriched data is committed.
+**Seeding** (`seed.yml`) — manual dispatch only, for re-seeding faculty rosters from public directories:
+- **SIO:** Scrapes UCSD catalog + `profiles.ucsd.edu`
+- **Jacobs:** Scrapes Jacobs School directory + UCSD catalog
+
+Both workflows support `workflow_dispatch` with school selector, sources, faculty indices, and dry-run mode. The enrichment workflow verifies that SIO/Jacobs rosters are seeded before proceeding. Vercel auto-deploys when enriched data is committed.
 
 ## Architecture
 
@@ -180,7 +198,7 @@ Manual runs are available via `workflow_dispatch` with options to specify depart
 |-----------|----------|--------------|
 | **Frontend** | Vercel | Serves `index.html`, CSS, and JS as static files via CDN |
 | **API** | Vercel / Render | Runs the Flask app — `/api/match`, `/api/match-text`, `/api/faculty` |
-| **Enrichment** | GitHub Actions | Weekly automated data enrichment from NIH, PubMed, ORCID, UCSD Profiles |
+| **Enrichment** | GitHub Actions | Weekly automated data enrichment from NIH, NSF, PubMed, ORCID, Semantic Scholar, UCSD/Scripps Profiles |
 
 ## Project Structure
 
@@ -192,7 +210,9 @@ research-alignment/
 ├── index.html                # Single-page frontend (three-tab interface)
 ├── .env.example              # Environment variable template
 ├── data/
-│   ├── faculty.json          # Faculty directory (source of truth)
+│   ├── faculty.json          # HWSPH faculty directory
+│   ├── sio_faculty.json      # SIO faculty directory
+│   ├── jacobs_faculty.json   # Jacobs faculty directory
 │   └── enrichment_log.json   # Append-only audit log
 ├── static/
 │   ├── css/style.css         # UCSD-branded styles (Seed Style Guide)
@@ -201,10 +221,12 @@ research-alignment/
 │   ├── document_parser.py    # PDF/TXT text extraction
 │   └── grant_matcher.py      # LLM matching engine + keyword pre-filter
 ├── enrichment/
-│   ├── pipeline.py           # Enrichment orchestrator
+│   ├── pipeline.py           # Enrichment orchestrator (HWSPH, SIO, Jacobs)
 │   ├── normalizer.py         # LLM-based data normalization
 │   ├── run.py                # GitHub Actions runner
-│   └── sources/              # Data source adapters (NIH, PubMed, ORCID, UCSD)
+│   ├── seed_sio.py           # SIO faculty seeding script
+│   ├── seed_jacobs.py        # Jacobs faculty seeding script
+│   └── sources/              # Data source adapters (NIH, NSF, PubMed, ORCID, UCSD, Scripps)
 └── docs/
     ├── responsible-ai-seed-principles.md
     └── seed-style-guide.md
