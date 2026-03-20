@@ -11,6 +11,7 @@ import tempfile
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
+from urllib.parse import unquote
 
 from .normalizer import normalize_faculty_data
 from .sources.nih_reporter import NIHReporterSource
@@ -251,6 +252,8 @@ def enrich_faculty(faculty_index, sources=None, dry_run=False, department=None,
                 if old_value and field not in JSON_FIELDS:
                     continue  # Don't overwrite existing direct fields
 
+                if field == "email" and isinstance(value, str):
+                    value = unquote(value)
                 faculty_dict[field] = value
 
                 log_entries.append(_make_log_entry(
