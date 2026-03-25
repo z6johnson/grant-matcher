@@ -199,8 +199,7 @@
       "department_l5": "",
       "department_eah": "MARINE BIOLOGY",
       "department_code": "242",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "Duncan",
@@ -557,7 +556,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -999,8 +997,7 @@
       "department_l5": "",
       "department_eah": "MARINE PHYSICAL LABORATORY",
       "department_code": "245",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "Andrew",
@@ -1335,8 +1332,7 @@
       "department_l5": "",
       "department_eah": "INTEGR OCEANOGRAPHY DIV",
       "department_code": "295",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "Eric",
@@ -1887,8 +1883,7 @@
       "department_l5": "",
       "department_eah": "CTR FOR MARINE BIOTEC & BIOMED",
       "department_code": "257",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "Lihini",
@@ -2243,8 +2238,7 @@
       "department_l5": "",
       "department_eah": "GEOSCIENCES RESEARCH DIV.",
       "department_code": "243",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "Andreas",
@@ -2496,7 +2490,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Geosciences Research Div.",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -2837,7 +2830,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Biology",
       "employee_class": "Academic: Faculty",
       "job_code": "1300",
@@ -2958,7 +2950,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -3620,7 +3611,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Biology",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -3764,7 +3754,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -4038,8 +4027,7 @@
       "department_l5": "",
       "department_eah": "INTEGR OCEANOGRAPHY DIV",
       "department_code": "295",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "Douglas",
@@ -4422,7 +4410,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Ctr For Marine Biotec & Biomed",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -4612,7 +4599,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Faculty",
       "job_code": "1200",
@@ -4974,7 +4960,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -5191,7 +5176,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Climate/Atmos Sci/Phy Oceanog",
       "employee_class": "Academic: Faculty",
       "job_code": "1603",
@@ -5522,7 +5506,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -6034,7 +6017,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Igpp",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -6366,7 +6348,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Biology",
       "employee_class": "Academic: Faculty",
       "job_code": "1200",
@@ -6719,7 +6700,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -6821,7 +6801,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Physical Laboratory",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -6976,7 +6955,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Igpp",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -7262,8 +7240,7 @@
       "department_l5": "",
       "department_eah": "INTEGR OCEANOGRAPHY DIV",
       "department_code": "295",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "Bianca",
@@ -7386,7 +7363,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Biology",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -7471,7 +7447,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -8040,7 +8015,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -8359,7 +8333,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Igpp",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -8476,7 +8449,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -9074,7 +9046,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Ctr For Marine Biotec & Biomed",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -9414,7 +9385,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -9591,7 +9561,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Geosciences Research Div.",
       "employee_class": "Academic: Faculty",
       "job_code": "1300",
@@ -9751,7 +9720,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Climate/Atmos Sci/Phy Oceanog",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -10044,7 +10012,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -10362,8 +10329,7 @@
       "department_l5": "",
       "department_eah": "SIO DEPARTMENT",
       "department_code": "256",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "Luca",
@@ -10469,7 +10435,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -10585,7 +10550,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -10709,7 +10673,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Climate/Atmos Sci/Phy Oceanog",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -10978,7 +10941,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -11169,7 +11131,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -11615,7 +11576,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Biology",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -11873,7 +11833,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -12013,7 +11972,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Geosciences Research Div.",
       "employee_class": "Academic: Faculty",
       "job_code": "1200",
@@ -12216,8 +12174,7 @@
       "department_l5": "",
       "department_eah": "INTEGR OCEANOGRAPHY DIV",
       "department_code": "295",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "Catherine",
@@ -12667,7 +12624,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Igpp",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -12982,7 +12938,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Igpp",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -13251,7 +13206,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Geosciences Research Div.",
       "employee_class": "Academic: Faculty",
       "job_code": "1603",
@@ -13398,7 +13352,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Climate/Atmos Sci/Phy Oceanog",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -13724,7 +13677,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Geosciences Research Div.",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -14004,7 +13956,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -14340,7 +14291,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -14424,7 +14374,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Faculty",
       "job_code": "1200",
@@ -14508,7 +14457,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Igpp",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -14883,7 +14831,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -14959,7 +14906,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Biology",
       "employee_class": "Academic: Faculty",
       "job_code": "1300",
@@ -15263,7 +15209,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Geosciences Research Div.",
       "employee_class": "Academic: Faculty",
       "job_code": "1200",
@@ -15587,7 +15532,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -15707,7 +15651,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Non Faculty",
       "job_code": "3200",
@@ -15920,7 +15863,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Geosciences Research Div.",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -16093,7 +16035,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -16203,7 +16144,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Non Faculty",
       "job_code": "3220",
@@ -16353,8 +16293,7 @@
       "department_l5": "",
       "department_eah": "CLIMATE/ATMOS SCI/PHY OCEANOG",
       "department_code": "259",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "Amato",
@@ -16501,8 +16440,7 @@
       "department_l5": "",
       "department_eah": "CLIMATE/ATMOS SCI/PHY OCEANOG",
       "department_code": "259",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "Wenyuan",
@@ -16795,7 +16733,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Igpp",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -16900,7 +16837,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -17065,7 +17001,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Biology",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -17615,7 +17550,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Ctr For Marine Biotec & Biomed",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -17840,7 +17774,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Igpp",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -18280,7 +18213,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Geosciences Research Div.",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -18654,8 +18586,7 @@
       "department_l5": "",
       "department_eah": "INTEGR OCEANOGRAPHY DIV",
       "department_code": "295",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "Kaitlin",
@@ -18981,7 +18912,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -19179,8 +19109,7 @@
       "department_l5": "",
       "department_eah": "IGPP",
       "department_code": "260",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "Robert",
@@ -19296,7 +19225,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Climate/Atmos Sci/Phy Oceanog",
       "employee_class": "Academic: Non Faculty",
       "job_code": "3200",
@@ -19586,7 +19514,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Biology",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -19703,7 +19630,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Igpp",
       "employee_class": "Academic: Faculty",
       "job_code": "1200",
@@ -19721,118 +19647,6 @@
       "eah_status": "Active",
       "orcid": "0000-0001-7051-4291",
       "last_enriched": "2026-03-24T20:52:41.693587+00:00"
-    },
-    {
-      "first_name": "Natalya",
-      "last_name": "Gallo",
-      "degrees": [
-        "PhD"
-      ],
-      "title": "Assistant Professor",
-      "email": "",
-      "research_interests": "Marine ecology, hypoxia, oxygen minimum zones, deep-sea biology, climate impacts on marine life",
-      "research_interests_enriched": "Natalya Gallo investigates how climate‑driven changes in ocean oxygen dynamics affect marine organisms and ecosystems, focusing on hypoxic and oxygen minimum zones, deep‑sea habitats, and fjord environments. Her research combines in situ observations with autonomous landers, microbiome sequencing, and experimental assessments of marine carbon‑dioxide removal to elucidate physiological and community‑level responses of fish and benthic communities.",
-      "expertise_keywords": [
-        "marine ecology",
-        "hypoxia tolerance",
-        "oxygen minimum zones",
-        "deep‑sea biology",
-        "climate impacts on marine life",
-        "marine carbon dioxide removal",
-        "fjord hyperbenthic communities",
-        "seafloor community responses",
-        "autonomous lander technology",
-        "fish microbiomes",
-        "piezophilic microbes",
-        "demersal fish physiology",
-        "ocean deoxygenation",
-        "ecosystem modeling"
-      ],
-      "methodologies": [
-        "autonomous lander deployments",
-        "in situ sensor measurements of oxygen",
-        "field ecological surveys (fish, benthos)",
-        "microbiome sequencing (16S rRNA, metagenomics)",
-        "laboratory hypoxia tolerance assays",
-        "experimental mesocosm studies",
-        "climate impact and carbon‑dioxide removal scenario modeling",
-        "statistical community analysis"
-      ],
-      "disease_areas": [
-        "marine hypoxia",
-        "ocean deoxygenation",
-        "deep‑sea ecosystem dynamics",
-        "impacts of marine carbon sequestration"
-      ],
-      "populations": [
-        "demersal fish",
-        "hadal/deep‑sea fish",
-        "hyperbenthic invertebrates",
-        "marine microbial communities",
-        "fjord ecosystems",
-        "Gulf of California marine habitats",
-        "global oceanic oxygen minimum zones"
-      ],
-      "funded_grants": [],
-      "recent_publications": [
-        {
-          "title": "Microbiomes of Hadal Fishes across Trench Habitats Contain Similar Taxa and Known Piezophiles.",
-          "year": 2022,
-          "journal": "mSphere",
-          "mesh_terms": [
-            "Adaptation, Physiological",
-            "Animals",
-            "Fishes",
-            "Gastrointestinal Microbiome",
-            "Microbiota",
-            "Perciformes",
-            "RNA, Ribosomal, 16S"
-          ],
-          "abstract": "Hadal snailfishes are the deepest-living fishes in the ocean, inhabiting trenches from depths of ∼6,000 to 8,000 m. While the microbial communities in trench environments have begun to be characterized, the microbes associated with hadal megafauna remain relatively unknown. Here, we describe the gut microbiomes of two hadal snailfishes,"
-        },
-        {
-          "title": "Home sweet suboxic home: remarkable hypoxia tolerance in two demersal fish species in the Gulf of California.",
-          "year": 2019,
-          "journal": "Ecology",
-          "mesh_terms": [
-            "Animals",
-            "California",
-            "Ecosystem",
-            "Fishes",
-            "Hypoxia"
-          ]
-        },
-        {
-          "title": "Fish Ecology and Evolution in the World's Oxygen Minimum Zones and Implications of Ocean Deoxygenation.",
-          "year": 2016,
-          "journal": "Advances in marine biology",
-          "mesh_terms": [
-            "Adaptation, Biological",
-            "Animals",
-            "Biodiversity",
-            "Biological Evolution",
-            "Ecosystem",
-            "Fisheries",
-            "Fishes",
-            "Global Warming",
-            "Hypoxia",
-            "Oceans and Seas",
-            "Oxygen",
-            "Seasons",
-            "Temperature"
-          ],
-          "abstract": "Oxygen minimum zones (OMZs) and oxygen limited zones (OLZs) are important oceanographic features in the Pacific, Atlantic, and Indian Ocean, and are characterized by hypoxic conditions that are physiologically challenging for demersal fish. Thickness, depth of the upper boundary, minimum oxygen levels, local temperatures, and diurnal, seasonal, and interannual oxycline variability differ regionally, with the thickest and shallowest OMZs occurring in the subtropics and tropics. Although most fish"
-        }
-      ],
-      "profile_url": "",
-      "orcid": "0000-0001-5168-4244",
-      "h_index": null,
-      "committee_service": [],
-      "integrity_flags": [
-        "Not found in EAH Active Academics (2026-03-23) — may no longer be employed"
-      ],
-      "last_enriched": "2026-03-20T15:44:45.757960+00:00",
-      "eah_active": false
     },
     {
       "first_name": "Jeffrey",
@@ -20138,7 +19952,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -20432,7 +20245,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -21061,7 +20873,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Ctr For Marine Biotec & Biomed",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -21718,7 +21529,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Ctr For Marine Biotec & Biomed",
       "employee_class": "Academic: Faculty",
       "job_code": "1110",
@@ -21827,7 +21637,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Faculty",
       "job_code": "1200",
@@ -22073,7 +21882,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Ctr For Marine Biotec & Biomed",
       "employee_class": "Academic: Faculty",
       "job_code": "1110",
@@ -22321,8 +22129,7 @@
       "department_l5": "",
       "department_eah": "CLIMATE/ATMOS SCI/PHY OCEANOG",
       "department_code": "259",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "Ralf",
@@ -22484,7 +22291,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -22855,7 +22661,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Climate/Atmos Sci/Phy Oceanog",
       "employee_class": "Academic: Non Faculty",
       "job_code": "3200",
@@ -23201,7 +23006,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -23324,7 +23128,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -23628,7 +23431,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Igpp",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -24040,7 +23842,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Ctr For Marine Biotec & Biomed",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -24109,7 +23910,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Physical Laboratory",
       "employee_class": "Academic: Faculty",
       "job_code": "1343",
@@ -24379,7 +24179,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Igpp",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -24823,7 +24622,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Directors Office-Sio",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -25231,7 +25029,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Biology",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -25471,7 +25268,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -25625,7 +25421,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Biology",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -25731,7 +25526,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -26023,7 +25817,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Biology",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -26129,7 +25922,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Igpp",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -26272,7 +26064,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Ctr For Marine Biotec & Biomed",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -26396,7 +26187,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -26535,7 +26325,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Faculty",
       "job_code": "1680",
@@ -27070,7 +26859,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Geosciences Research Div.",
       "employee_class": "Academic: Faculty",
       "job_code": "1110",
@@ -27298,7 +27086,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -27746,7 +27533,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Biology",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -28089,7 +27875,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Biology",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -28169,7 +27954,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -28288,7 +28072,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -28694,7 +28477,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -29044,7 +28826,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Physical Laboratory",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -29453,7 +29234,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Ctr For Marine Biotec & Biomed",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -29615,7 +29395,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -29761,7 +29540,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Biology",
       "employee_class": "Academic: Faculty",
       "job_code": "1607",
@@ -29900,7 +29678,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -30261,7 +30038,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -30678,8 +30454,7 @@
       "department_l5": "",
       "department_eah": "GEOSCIENCES RESEARCH DIV.",
       "department_code": "243",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "Linda",
@@ -30881,7 +30656,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -31022,7 +30796,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -31164,7 +30937,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Igpp",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -31182,231 +30954,6 @@
       "eah_status": "Active",
       "profile_url": "https://scripps.ucsd.edu/profiles/dkilb",
       "last_enriched": "2026-03-24T21:05:16.706845+00:00"
-    },
-    {
-      "first_name": "Jan",
-      "last_name": "Kleissl",
-      "degrees": [
-        "PhD"
-      ],
-      "title": "Professor",
-      "email": null,
-      "research_interests": "Solar energy forecasting, environmental fluid mechanics, boundary layer meteorology, renewable energy",
-      "research_interests_enriched": "Jan Kleissl’s research centers on the intersection of atmospheric science and renewable energy systems, focusing on solar energy forecasting, boundary‑layer meteorology, and the integration of distributed energy resources (DERs) into the electric grid. He develops advanced data‑driven and physics‑based models—including deep reinforcement learning for inverter coordination and GIS‑based solar potential assessments—to improve grid reliability, optimize electric‑vehicle charging, and support green urban engineering. His work also spans environmental fluid mechanics applications such as aquatic debris removal using multi‑agent unmanned surface vehicles.",
-      "expertise_keywords": [
-        "solar forecasting",
-        "photovoltaic inverter control",
-        "deep deterministic policy gradient",
-        "renewable energy integration",
-        "distributed energy resources",
-        "grid‑connected testing",
-        "environmental fluid mechanics",
-        "boundary layer meteorology",
-        "atmospheric sciences",
-        "concentrated solar power",
-        "GIS solar potential assessment",
-        "electric vehicle charging impacts",
-        "time‑of‑use pricing",
-        "green urban engineering",
-        "evapotranspiration modeling",
-        "skin temperature coupling",
-        "aquatic debris cleanup",
-        "multi‑agent unmanned surface vehicles",
-        "hotspot‑based path optimization"
-      ],
-      "methodologies": [
-        "deep reinforcement learning",
-        "machine learning",
-        "statistical analysis of sub‑hourly solar variability",
-        "GIS spatial analysis",
-        "numerical atmospheric boundary‑layer modeling",
-        "field measurements and sensor networks",
-        "experimental grid‑connected DER testing",
-        "multi‑agent system simulation",
-        "path optimization algorithms",
-        "renewable energy system simulation",
-        "laboratory and field experiments"
-      ],
-      "disease_areas": [],
-      "populations": [
-        "urban environments",
-        "electric power grid",
-        "distributed energy resources",
-        "electric vehicles",
-        "solar farms",
-        "concentrated solar power sites (e.g., China)",
-        "coastal shorelines (plastic debris)",
-        "atmospheric boundary layer",
-        "urban microclimates",
-        "land surface evapotranspiration zones"
-      ],
-      "funded_grants": [
-        {
-          "title": "I-Corps: Aquatic debris cleanup using multi-agent unmanned surface vehicles and hotspot-based path optimization",
-          "agency": "NSF",
-          "nsf_program": "I-Corps",
-          "amount": "50000",
-          "start_date": "03/15/2021",
-          "end_date": "08/31/2022",
-          "nsf_award_id": "2105958",
-          "abstract": "The broader impact/commercial potential of this I-Corps project is to benefit US shorelines. The World Economic Forum predicts that by 2050 there will be more plastic than fish in the world's oceans. Waterfront maintenance workers face the brunt of the marine trash pollution issue as 80% of marine trash is sourced near-shore. As a result, waterfront governments alone spend a total of $10.2 billion to clean these waterways. The proposed technology benefits ecosystems by removing trash pollution f"
-        },
-        {
-          "title": "Mid-scale RI-2: Grid-Connected Testing Infrastructure for Networked Control of Distributed Energy Resources",
-          "agency": "NSF",
-          "nsf_program": "Mid-scale RI - Track 2",
-          "amount": "41946864",
-          "start_date": "11/01/2020",
-          "end_date": "03/31/2026",
-          "nsf_award_id": "1947050",
-          "abstract": "The current power grid faces the long-term challenge of efficiently integrating renewables and distributed energy resources (DERs) due to demand inflexibility, legacy grid operations, and uncertainties caused by human behavior. This challenge becomes more acute as energy generation becomes ‘greener’ and more distributed, and as electric vehicles proliferate. The Distributed Energy Resources Connect (DERConnect) infrastructure project envisions a unique open-access and remote access national test",
-          "co_pis": [
-            "Rajesh K Gupta gupta@cs.ucsd.edu",
-            "Raymond A de Callafon callafon@ucsd.edu",
-            "Jorge Cortes cortes@ucsd.edu",
-            "Sonia Martinez soniamd@ucsd.edu"
-          ]
-        },
-        {
-          "title": "Travel funds for NSF 2012 CBET Grantee Conference, June 6-8, 2012, Baltimore, MD",
-          "agency": "NSF",
-          "nsf_program": "EnvS-Environmtl Sustainability",
-          "amount": "1999",
-          "start_date": "06/01/2012",
-          "end_date": "11/30/2012",
-          "nsf_award_id": "1246237",
-          "abstract": "1246237 (Kleissl).  This is a travel grant for the CBET grantee to attend and present at the CBET Grantee Conference in Baltimore, June 6-8, 2012"
-        },
-        {
-          "title": "CAREER: Green Engineering of Urban Areas",
-          "agency": "NSF",
-          "nsf_program": "EnvS-Environmtl Sustainability",
-          "amount": "407448",
-          "start_date": "09/01/2009",
-          "end_date": "08/31/2014",
-          "nsf_award_id": "0847054",
-          "abstract": "This award is funded under the American Recovery and Reinvestment Act of 2009 (Public Law 111-5).\r\n\r\n0847054\r\nKleissl\r\n\r\nWhile green engineering measures such as artificial turf, reflective roof coatings, and urban forests have proven advantageous in conserving resources in individual buildings, holistic modeling of urban meteorology and engineered systems at the physical process level is lacking.  Building upon engineering tools from fluid mechanics, heat transfer and wireless embedded systems,"
-        },
-        {
-          "title": "Proof of Concept: Coupling Between Skin Temperature and Evapotranspiration",
-          "agency": "NSF",
-          "nsf_program": "Hydrologic Sciences",
-          "amount": "35181",
-          "start_date": "03/01/2008",
-          "end_date": "02/28/2010",
-          "nsf_award_id": "0739109",
-          "abstract": "Proof of Concept: Coupling Between Skin Temperature and Evapotranspiration\r\nJan Kleissl\r\nDept of Mechanical and Aerospace Engineering, University of California, San Diego\r\nUndergraduate Research Assistant: Yoichi Shiga\r\n\r\nProject Summary\r\n\r\nIntellectual Merit\r\nSimultaneous measurements of radiometric surface skin temperatures and atmospheric surface layer turbulence will give us new fundamental insights into the physics of exchange of heat between soil and atmosphere. A unique high-quality datas"
-        }
-      ],
-      "recent_publications": [
-        {
-          "title": "Online PV Smart Inverter Coordination using Deep Deterministic Policy Gradient",
-          "year": 2022,
-          "journal": "Electric Power Systems Research"
-        },
-        {
-          "title": "A review of solar forecasting, its dependence on atmospheric sciences and implications for grid integration: Towards carbon neutrality",
-          "year": 2022,
-          "journal": "Renewable and Sustainable Energy Reviews"
-        },
-        {
-          "title": "Assessment of concentrated solar power generation potential in China based on Geographic Information System (GIS)",
-          "year": 2022,
-          "journal": "Applied Energy"
-        },
-        {
-          "title": "Dependence of subhourly solar variability statistics on time interval and cloud vertical position",
-          "year": 2022,
-          "journal": "Journal of Renewable and Sustainable Energy"
-        },
-        {
-          "title": "Effects of number of electric vehicles charging/discharging on total electricity costs in commercial buildings with time-of-use energy and demand charges",
-          "year": 2022,
-          "journal": "Journal of Renewable and Sustainable Energy"
-        },
-        {
-          "title": "Graph theory and nighttime imagery based microgrid design",
-          "year": 2022,
-          "journal": "Journal of Renewable and Sustainable Energy"
-        },
-        {
-          "title": "Quantifying and mitigating soiling and abrasion in solar power",
-          "year": 2022,
-          "journal": "Journal of Renewable and Sustainable Energy"
-        },
-        {
-          "title": "Technical Control and Optimal Dispatch Strategy for a Hybrid Energy System",
-          "year": 2022,
-          "journal": "Energies"
-        },
-        {
-          "title": "Power and energy constrained battery operating regimes: Effect of temporal resolution on peak shaving by battery energy storage systems",
-          "year": 2022,
-          "journal": "Journal of Renewable and Sustainable Energy"
-        },
-        {
-          "title": "Frequency Regulation With Heterogeneous Energy Resources: A Realization Using Distributed Control",
-          "year": 2021,
-          "journal": "IEEE Transactions on Smart Grid"
-        },
-        {
-          "title": "Effects of Surface and Top Wind Shear on the Spatial Organization of Marine Stratocumulus‐Topped Boundary Layers",
-          "year": 2021,
-          "journal": "Journal of Geophysical Research: Atmospheres"
-        },
-        {
-          "title": "Dynamics of the coastal Stratocumulus cloud dissipation",
-          "year": 2021
-        },
-        {
-          "title": "Impact of the coronavirus pandemic on electric vehicle workplace charging",
-          "year": 2021,
-          "journal": "Journal of Renewable and Sustainable Energy"
-        },
-        {
-          "title": "Open-source multi-year power generation, consumption, and storage data in a microgrid",
-          "year": 2021,
-          "journal": "Journal of Renewable and Sustainable Energy"
-        },
-        {
-          "title": "Aggregation of Voltage-Controlled Devices During Distribution Network Reduction",
-          "year": 2021,
-          "journal": "IEEE Transactions on Smart Grid"
-        },
-        {
-          "title": "EDA‐based optimized global control for PV inverters in distribution grids",
-          "year": 2021,
-          "journal": "IET Renewable Power Generation"
-        },
-        {
-          "title": "Techno-economic optimization of islanded microgrids considering intra-hour variability",
-          "year": 2021,
-          "journal": "Applied Energy"
-        },
-        {
-          "title": "Effects of surface and top wind shear on the spatial organization of marine Stratocumulus-topped boundary layers",
-          "year": 2020
-        },
-        {
-          "title": "Estimation of the largest expected photovoltaic power ramp rates",
-          "year": 2020,
-          "journal": "Applied Energy"
-        },
-        {
-          "title": "Verification of deterministic solar forecasts",
-          "year": 2020,
-          "journal": "Solar Energy"
-        }
-      ],
-      "profile_url": "https://researcherprofiles.org/profile/180592",
-      "orcid": "0000-0003-4364-0211",
-      "h_index": null,
-      "committee_service": [],
-      "integrity_flags": [
-        "Not found in EAH Active Academics (2026-03-23) — may no longer be employed"
-      ],
-      "last_enriched": "2026-03-20T15:43:28.401840+00:00",
-      "eah_active": false
     },
     {
       "first_name": "Gerald",
@@ -31721,7 +31268,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Ctr For Marine Biotec & Biomed",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -31806,7 +31352,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -31825,132 +31370,6 @@
       "profile_url": "https://scripps.ucsd.edu/profiles/jkoslow",
       "orcid": "0000-0002-1476-420X",
       "last_enriched": "2026-03-24T21:05:40.863600+00:00"
-    },
-    {
-      "first_name": "Falko",
-      "last_name": "Kuester",
-      "degrees": [
-        "PhD"
-      ],
-      "title": "Professor",
-      "email": null,
-      "research_interests": "Visualization, virtual reality, remote sensing, cultural heritage documentation, 3D imaging",
-      "research_interests_enriched": "Professor Falko Kuester focuses on the development and application of advanced visualization, virtual reality, and remote sensing technologies for the exploration of large, complex datasets. His work bridges earth system science, marine ecology, and cultural heritage, creating immersive 3D imaging and point‑cloud analysis tools for coral reef monitoring, archaeological documentation, and collaborative scientific discovery.",
-      "expertise_keywords": [
-        "advanced visualization",
-        "virtual reality",
-        "immersive analytics",
-        "remote sensing",
-        "3D imaging",
-        "point cloud segmentation",
-        "computer vision",
-        "machine learning",
-        "cultural heritage diagnostics",
-        "archaeological documentation",
-        "earth system science visualization",
-        "high‑performance visualization",
-        "big data analytics"
-      ],
-      "methodologies": [
-        "3D point‑cloud processing",
-        "segmentation algorithms",
-        "machine learning classification",
-        "photogrammetry",
-        "GIS and spatial analysis",
-        "high‑performance computing",
-        "collaborative visualization environments",
-        "virtual reality immersion"
-      ],
-      "disease_areas": [
-        "coral reef ecosystems",
-        "cultural heritage archaeology",
-        "earth system science"
-      ],
-      "populations": [
-        "coral reef habitats (global)",
-        "early Mesolithic burial sites in northwestern Italy",
-        "global Earth system models and climate data"
-      ],
-      "funded_grants": [
-        {
-          "title": "MRI: Development of Advanced Visualization Instrumentation for the Collaborative Exploration of Big Data",
-          "agency": "NSF",
-          "nsf_program": "Major Research Instrumentation",
-          "amount": "2406430",
-          "start_date": "10/01/2013",
-          "end_date": "12/31/2017",
-          "nsf_award_id": "1338192",
-          "abstract": "Proposal #:\t13-38192\r\nPI(s):\t\tKuester, Falko; DeFanti, Thomas A.; Rosing, Tajana S.; Schulze, Jurgen P.\r\nInstitution:\tUniversity of California - San Diego\r\nTitle: \tMRI/Dev.: Advanced Visualization Instrumentation for the Collaborative Exploration of Big Data\r\nProject Proposed:\r\nThis project, developing a Scalable Omni-Presence Environment (ScOPE), a next generation visualization system for collaborative exploration of large volumes of data, provides an environment for analyzing, processing, and ",
-          "co_pis": [
-            "Tajana S Rosing tajana@ucsd.edu",
-            "Thomas A DeFanti tdefanti@ucsd.edu",
-            "Jurgen P Schulze jschulze@ucsd.edu"
-          ]
-        },
-        {
-          "title": "IGERT: Training, Research and Education in Engineering for Cultural Heritage Diagnostics",
-          "agency": "NSF",
-          "nsf_program": "IGERT FULL PROPOSALS",
-          "amount": "3200000",
-          "start_date": "07/01/2010",
-          "end_date": "12/31/2016",
-          "nsf_award_id": "0966375",
-          "abstract": "This Integrative Graduate Education and Research Training (IGERT) award supports the development of an interdisciplinary graduate training program in engineering for cultural heritage diagnostics. Forensic engineering, the investigation of failures and failure mechanisms, is uniquely suited yet rarely used to assess the damage to artifacts of cultural heritage, including ancient monuments, historic buildings and paintings, from the ravages of time, pollution, natural disasters and decay.\r\n\r\nThis",
-          "co_pis": [
-            "Thomas E Levy tlevy@ucsd.edu",
-            "Maurizio Seracini mseracini@ucsd.edu"
-          ]
-        },
-        {
-          "title": "MRI:  HIPerWall:  Development of a High-Performance Visualization System for Collaborative Earth System Sciences",
-          "agency": "NSF",
-          "nsf_program": "Major Research Instrumentation",
-          "amount": "393533",
-          "start_date": "09/01/2004",
-          "end_date": "08/31/2007",
-          "nsf_award_id": "0421554",
-          "abstract": "This project, developing a Highly Interactive Parallelized Display Wall (HIPerWall) new visualization facility, aims at advancing the state of Earth Science modeling and visualization. HIPerWall is a high performance visualization system with a wall-sized ultra high-density tiled display that operates at the perception threshold of the human eye, allowing researchers to view and manipulate their data sets at resolutions commensurate with large-scale grids or dense sensor network data. The facili",
-          "co_pis": [
-            "Jean-Luc Gaudiot gaudiot@uci.edu",
-            "Soroosh Sorooshian soroosh@uci.edu",
-            "Charles S Zender zender@uci.edu",
-            "Stephen Jenks sjenks@uci.edu"
-          ]
-        }
-      ],
-      "recent_publications": [
-        {
-          "title": "Automated 2D, 2.5D, and 3D Segmentation of Coral Reef Pointclouds and Orthoprojections.",
-          "year": 2022,
-          "journal": "Frontiers in robotics and AI",
-          "abstract": "Enabled by advancing technology, coral reef researchers increasingly prefer use of image-based surveys over approaches depending solely upon"
-        },
-        {
-          "title": "An infant burial from Arma Veirana in northwestern Italy provides insights into funerary practices and female personhood in early Mesolithic Europe.",
-          "year": 2021,
-          "journal": "Scientific reports",
-          "mesh_terms": [
-            "Burial",
-            "Female",
-            "History, Ancient",
-            "Humans",
-            "Infant",
-            "Italy",
-            "Mortuary Practice",
-            "Social Status"
-          ],
-          "abstract": "The evolution and development of human mortuary behaviors is of enormous cultural significance. Here we report a richly-decorated young infant burial (AVH-1) from Arma Veirana (Liguria, northwestern Italy) that is directly dated to 10,211-9910 cal BP (95.4% probability), placing it within the early Holocene and therefore attributable to the early Mesolithic, a cultural period from which well-documented burials are exceedingly rare. Virtual dental histology, proteomics, and aDNA indicate that the"
-        }
-      ],
-      "profile_url": "https://researcherprofiles.org/profile/318746563",
-      "orcid": "0000-0002-9265-7063",
-      "h_index": null,
-      "committee_service": [],
-      "integrity_flags": [
-        "Not found in EAH Active Academics (2026-03-23) — may no longer be employed"
-      ],
-      "last_enriched": "2026-03-20T15:57:37.833037+00:00",
-      "eah_active": false
     },
     {
       "first_name": "Michael",
@@ -32329,7 +31748,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -32365,7 +31783,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Igpp",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -32644,7 +32061,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Biology",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -32890,7 +32306,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -33002,7 +32417,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -33566,8 +32980,7 @@
       "department_l5": "",
       "department_eah": "INTEGR OCEANOGRAPHY DIV",
       "department_code": "295",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "Morgan",
@@ -33812,7 +33225,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Climate/Atmos Sci/Phy Oceanog",
       "employee_class": "Academic: Faculty",
       "job_code": "1300",
@@ -34051,7 +33463,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Physical Laboratory",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -34509,7 +33920,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -34676,7 +34086,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Climate/Atmos Sci/Phy Oceanog",
       "employee_class": "Academic: Faculty",
       "job_code": "1143",
@@ -34948,7 +34357,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -35161,7 +34569,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -35579,7 +34986,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Physical Laboratory",
       "employee_class": "Academic: Faculty",
       "job_code": "1200",
@@ -35596,272 +35002,6 @@
       "department_code": "245",
       "eah_status": "Active",
       "orcid": "0000-0001-7722-7252"
-    },
-    {
-      "first_name": "Drew",
-      "last_name": "Lucas",
-      "degrees": [
-        "PhD"
-      ],
-      "title": "Associate Professor",
-      "email": "pcabrales@ucsd.edu",
-      "research_interests": "Coastal oceanography, nearshore processes, internal waves, ocean optics, underwater acoustics",
-      "research_interests_enriched": "Drew Lucas investigates coastal oceanography with an emphasis on nearshore dynamics, internal wave processes, ocean optics, and underwater acoustics.  In recent years his work has expanded to biophysical and biomedical applications, including the development of hemoglobin‑based therapeutics, polymerized albumin plasma substitutes, and studies of microvascular physiology and surgical outcomes.  This interdisciplinary portfolio bridges marine physical science with translational biomedical engineering.",
-      "expertise_keywords": [
-        "coastal oceanography",
-        "nearshore processes",
-        "internal waves",
-        "ocean optics",
-        "underwater acoustics",
-        "hemoglobin therapeutics",
-        "plasma substitutes",
-        "PEGylation",
-        "polymerized albumin",
-        "microcirculation",
-        "hemorrhagic shock",
-        "nephropathy",
-        "spinal fusion complications",
-        "craniosynostosis",
-        "biophysical assays",
-        "tangential flow filtration"
-      ],
-      "methodologies": [
-        "field oceanographic measurements",
-        "remote sensing of ocean optics",
-        "acoustic Doppler profiling",
-        "laboratory biophysical assays",
-        "PEGylation chemistry",
-        "tangential flow filtration",
-        "animal model experiments (rodents)",
-        "microvascular imaging",
-        "clinical retrospective cohort analysis",
-        "statistical modeling"
-      ],
-      "disease_areas": [
-        "sickle cell vaso‑occlusive crisis",
-        "hemoglobin‑induced nephropathy",
-        "hemorrhagic shock",
-        "microvascular dysfunction",
-        "spinal fusion surgical complications",
-        "craniosynostosis"
-      ],
-      "populations": [
-        "human adults",
-        "human children and adolescents",
-        "rodent models (mice, Cricetinae)",
-        "coastal marine environments"
-      ],
-      "funded_grants": [],
-      "recent_publications": [
-        {
-          "title": "Apohemoglobin-Haptoglobin Complex is a Therapeutic Against Vaso-Occlusive Crisis: Scavenging of Hemoglobin and Heme.",
-          "year": 2026,
-          "journal": "Blood advances",
-          "abstract": "Sickle cell disease (SCD) leads to vaso-occlusive episodes (VOEs) releasing cell-free hemoglobin (Hb) and heme that drive oxidative stress, inflammation, and microvascular dysfunction. Current treatments for VOEs remain limited with no targeted therapies addressing these hemolytic byproducts. This study investigated the potential of an apohemoglobin-haptoglobin (ApoHb-Hp) complex (protein scavenger of both Hb and heme) versus haptoglobin (Hp) (scavenger of only Hb), in transgenic SCD mice expose"
-        },
-        {
-          "title": "Microvascular Consequences of Methemoglobin Compared to Reduced Hemoglobin in the Microcirculation.",
-          "year": 2025,
-          "journal": "Microcirculation (New York, N.Y. : 1994)",
-          "mesh_terms": [
-            "Methemoglobin",
-            "Animals",
-            "Microcirculation",
-            "Hemoglobins",
-            "Humans",
-            "Male",
-            "Cricetinae",
-            "Mesocricetus",
-            "Oxidation-Reduction",
-            "Blood Substitutes",
-            "Microvessels",
-            "Oxygen"
-          ],
-          "abstract": "The development of hemoglobin-based oxygen carriers (HBOCs) offers a promising alternative to traditional blood transfusions, addressing critical limitations such as the need for cold storage, blood type matching, and a short ex vivo shelf life. HBOCs mimic the oxygen-carrying function of red blood cells without the risk of transfusion-related complications. However, hemoglobin is prone to oxidation when freely circulating in the vasculature, resulting in methemoglobin formation. In this oxidize"
-        },
-        {
-          "title": "PEGylation of polymerized albumin retains colloid osmotic pressure: Towards an enhanced potential plasma substitute.",
-          "year": 2025,
-          "journal": "Biotechnology progress",
-          "mesh_terms": [
-            "Polyethylene Glycols",
-            "Humans",
-            "Osmotic Pressure",
-            "Plasma Substitutes",
-            "Colloids",
-            "Serum Albumin",
-            "Polymerization",
-            "Serum Albumin, Human"
-          ],
-          "abstract": "Plasma expanders (PEs) are commonly used to replace lost blood volume for septic shock patients with increased vascular permeability. Human serum albumin (HSA) is the preferred PE, due to its innate ability to restore blood colloid osmotic pressure (COP). However, HSA is susceptible to protein extravasation under endothelial dysfunction leading to edema and exposing tissue to toxic HSA-bound metabolites. To prevent extravasation, the molecular diameter of HSA has been previously increased throug"
-        },
-        {
-          "title": "Resuscitation from Hemorrhagic Shock with a Novel Protein Cocktail Restores Microvascular Perfusion and Protects Vital Organs.",
-          "year": 2026,
-          "journal": "Shock (Augusta, Ga.)",
-          "mesh_terms": [
-            "Animals",
-            "Shock, Hemorrhagic",
-            "Resuscitation",
-            "Male",
-            "Cricetinae",
-            "Mesocricetus",
-            "Microcirculation",
-            "Humans",
-            "Hemodynamics"
-          ],
-          "abstract": "Low-titer O positive whole blood (LTOWB) has been introduced in prehospital care to resuscitate patients; however, the logistical obstacles, cost of carrying LTOWB, and the availability of it in trauma situations are a point of concern. Therefore, fluids, like lactated Ringer's (LR) and hydroxyethyl starch (HES), have been considered alternatives to LTOWB transfusion. Unfortunately, they dilute plasma proteins in the circulation and have unfavorable side effects. This study presents an alternati"
-        },
-        {
-          "title": "Mitigating hemoglobin-induced nephropathy: ApoHb-hp protection of podocytes.",
-          "year": 2024,
-          "journal": "Physiological reports",
-          "mesh_terms": [
-            "Animals",
-            "Podocytes",
-            "Mice",
-            "Haptoglobins",
-            "Hemoglobins",
-            "Cell Line",
-            "Reactive Oxygen Species",
-            "Oxidative Stress"
-          ],
-          "abstract": "This study investigates hemoglobin (Hb)-induced kidney injury and the protective role of the ApoHemoglobin-Haptoglobin (ApoHb-Hp) complex against heme and Hb damage. Hb facilitates oxygen (O"
-        },
-        {
-          "title": "Tangential flow filtration facilitated fractionation of polymerized human serum albumin: Insights into the effects of molecular size on biophysical properties.",
-          "year": 2024,
-          "journal": "Biotechnology progress",
-          "mesh_terms": [
-            "Humans",
-            "Serum Albumin",
-            "Molecular Weight",
-            "Filtration",
-            "Polymerization",
-            "Viscosity"
-          ],
-          "abstract": "Human serum albumin (HSA) is currently used as a plasma expander (PE) to increase blood volume during hypovolemic conditions, such as blood loss. However, its effectiveness is suboptimal in septic shock and burn patients due to their enhanced endothelial permeability, resulting in HSA extravasation into the tissue space leading to edema, and deposition of toxic HSA-bound metabolites. Hence, to expand HSA's applicability toward treating patients with compromised endothelial permeability, HSA has "
-        },
-        {
-          "title": "Degree of PEGylatation of",
-          "year": 2024,
-          "journal": "ACS applied bio materials",
-          "mesh_terms": [
-            "Animals",
-            "Biocompatible Materials",
-            "Hemoglobins",
-            "Materials Testing",
-            "Microcirculation",
-            "Oligochaeta",
-            "Oxidation-Reduction",
-            "Particle Size",
-            "Polyethylene Glycols",
-            "Erythrocytes",
-            "Mesocricetus"
-          ],
-          "abstract": "The demand for red blood cells (RBCs) is on the rise due to the increasing diagnosis of chronic diseases such as sickle cell anemia, malaria, and thalassemia. Despite many commercial attempts, there are no U.S. FDA-approved artificial RBCs for use in humans. Existing RBC substitutes have employed various strategies to transport oxygen, extend the circulation time, and reduce organ toxicity, but none have replicated the natural protective mechanisms of RBCs, which prevent hemoglobin (Hb) dimeriza"
-        },
-        {
-          "title": "Toxic side-effects of diaspirin cross-linked human hemoglobin are attenuated by the apohemoglobin-haptoglobin complex.",
-          "year": 2024,
-          "journal": "Biomedicine & pharmacotherapy = Biomedecine & pharmacotherapie",
-          "mesh_terms": [
-            "Animals",
-            "Hemoglobins",
-            "Humans",
-            "Haptoglobins",
-            "Male",
-            "Mesocricetus",
-            "Apoproteins",
-            "Blood Substitutes",
-            "Cross-Linking Reagents",
-            "Cricetinae"
-          ],
-          "abstract": "Alpha-alpha diaspirin-crosslinked human hemoglobin (DCLHb or ααHb) was a promising early generation red blood cell (RBC) substitute. The DCLHb was developed through a collaborative effort between the United States Army and Baxter Healthcare. The core design feature underlying its development was chemical stabilization of the tetrameric structure of hemoglobin (Hb) to prevent Hb intravascular dimerization and extravasation. DCLHb was developed to resuscitate warfighters on the battlefield, who su"
-        },
-        {
-          "title": "Frequency and predictors of complication clustering within 30 days of spinal fusion surgery: a study of children with neuromuscular scoliosis.",
-          "year": 2024,
-          "journal": "Spine deformity",
-          "mesh_terms": [
-            "Humans",
-            "Spinal Fusion",
-            "Scoliosis",
-            "Child",
-            "Adolescent",
-            "Female",
-            "Male",
-            "Retrospective Studies",
-            "Postoperative Complications",
-            "Neuromuscular Diseases",
-            "Risk Factors",
-            "Time Factors",
-            "Operative Time",
-            "Pneumonia"
-          ],
-          "abstract": "There is limited information on the clustering or co-occurrence of complications after spinal fusion surgery for neuromuscular disease in children. We aimed to identify the frequency and predictive factors of co-occurring perioperative complications in these children. In this retrospective database cohort study, we identified children (ages 10-18 years) with neuromuscular scoliosis who underwent elective spinal fusion in 2012-2020 from the National Surgical Quality Improvement Program-Pediatric "
-        },
-        {
-          "title": "Frequency and predictors of concurrent complications in multi-suture release for syndromic craniosynostosis.",
-          "year": 2024,
-          "journal": "Child's nervous system : ChNS : official journal of the International Society for Pediatric Neurosurgery",
-          "mesh_terms": [
-            "Humans",
-            "Child",
-            "Retrospective Studies",
-            "Neurosurgical Procedures",
-            "Surgical Wound Infection",
-            "Craniosynostoses",
-            "Risk Factors",
-            "Sutures",
-            "Postoperative Complications"
-          ],
-          "abstract": "Understanding the complication profile of craniosynostosis surgery is important, yet little is known about complication co-occurrence in syndromic children after multi-suture craniosynostosis surgery. We examined concurrent perioperative complications and predictive factors in this population. In this retrospective cohort study, children with syndromic diagnoses and multi-suture involvement who underwent craniosynostosis surgery in 2012-2020 were identified from the National Surgical Quality Imp"
-        },
-        {
-          "title": "Paul S. Frenette (1965-2021).",
-          "year": 2021,
-          "journal": "Cell stem cell"
-        },
-        {
-          "title": "Paul S. Frenette (1965-2021).",
-          "year": 2021,
-          "journal": "Cell"
-        },
-        {
-          "title": "Validation of ZAP-70 methylation and its relative significance in predicting outcome in chronic lymphocytic leukemia.",
-          "year": 2014,
-          "journal": "Blood",
-          "mesh_terms": [
-            "Adult",
-            "Aged",
-            "Aged, 80 and over",
-            "Biomarkers, Tumor",
-            "DNA Methylation",
-            "Female",
-            "Humans",
-            "Immunoglobulin Variable Region",
-            "Kaplan-Meier Estimate",
-            "Leukemia, Lymphocytic, Chronic, B-Cell",
-            "Male",
-            "Middle Aged",
-            "Prognosis",
-            "Proportional Hazards Models",
-            "Reverse Transcriptase Polymerase Chain Reaction",
-            "ZAP-70 Protein-Tyrosine Kinase"
-          ],
-          "abstract": "ZAP-70 methylation 223 nucleotides downstream of transcription start (CpG+223) predicts outcome in chronic lymphocytic leukemia (CLL), but its impact relative to CD38 and ZAP-70 expression or immunoglobulin heavy chain variable region (IGHV) status is uncertain. Additionally, standardizing ZAP-70 expression analysis has been unsuccessful. CpG+223 methylation was quantitatively determined in 295 untreated CLL cases using MassARRAY. Impact on clinical outcome vs CD38 and ZAP-70 expression and IGHV"
-        }
-      ],
-      "profile_url": "",
-      "orcid": "0000-0003-2360-9065",
-      "h_index": null,
-      "committee_service": [],
-      "integrity_flags": [
-        "Not found in EAH Active Academics (2026-03-23) — may no longer be employed"
-      ],
-      "last_enriched": "2026-03-20T15:41:54.337909+00:00",
-      "eah_active": false
     },
     {
       "first_name": "April",
@@ -36058,7 +35198,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Ctr For Marine Biotec & Biomed",
       "employee_class": "Academic: Faculty",
       "job_code": "1300",
@@ -36191,8 +35330,7 @@
       "department_l5": "",
       "department_eah": "CLIMATE/ATMOS SCI/PHY OCEANOG",
       "department_code": "259",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "Deirdre",
@@ -36414,7 +35552,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Ctr For Marine Biotec & Biomed",
       "employee_class": "Academic: Faculty",
       "job_code": "1200",
@@ -36449,7 +35586,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -36673,8 +35809,7 @@
       "department_l5": "",
       "department_eah": "MARINE PHYSICAL LABORATORY",
       "department_code": "245",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "Jacqueline",
@@ -36784,7 +35919,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Geosciences Research Div.",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -37108,8 +36242,7 @@
       "department_l5": "",
       "department_eah": "MARINE PHYSICAL LABORATORY",
       "department_code": "245",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "Thomas",
@@ -37185,7 +36318,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -37310,7 +36442,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Igpp",
       "employee_class": "Academic: Faculty",
       "job_code": "1200",
@@ -37484,7 +36615,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -37692,7 +36822,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Climate/Atmos Sci/Phy Oceanog",
       "employee_class": "Academic: Faculty",
       "job_code": "900",
@@ -37852,7 +36981,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -37871,79 +36999,6 @@
       "profile_url": "https://scripps.ucsd.edu/profiles/rmellors",
       "orcid": "0000-0002-2723-5163",
       "last_enriched": "2026-03-24T21:13:22.083066+00:00"
-    },
-    {
-      "first_name": "Dimitris",
-      "last_name": "Menemenlis",
-      "degrees": [
-        "PhD"
-      ],
-      "title": "Adjunct Professor",
-      "email": "zcasparcohen@ucsd.edu",
-      "research_interests": "Ocean modeling, ocean state estimation, data assimilation, climate modeling",
-      "research_interests_enriched": "Dimitris Menemenlis focuses on developing and applying high‑resolution ocean models for state estimation and climate prediction, integrating data assimilation techniques with satellite and in‑situ observations. His work spans ocean biogeochemistry, including dissolved inorganic carbon dynamics and riverine fluxes, as well as physical processes such as internal tides, acoustic thermometry, and phytoplankton bloom responses to sea‑ice variability. He leverages wide‑swath altimetry and surface drifter data to improve global ocean simulations and inform ocean observing system design.",
-      "expertise_keywords": [
-        "ocean modeling",
-        "ocean state estimation",
-        "data assimilation",
-        "climate modeling",
-        "global ocean simulation",
-        "wide‑swath altimetry",
-        "ocean biogeochemistry",
-        "dissolved inorganic carbon",
-        "riverine biogeochemical fluxes",
-        "internal tides",
-        "acoustic thermometry",
-        "phytoplankton bloom dynamics",
-        "sea‑ice interactions",
-        "sediment diagenesis",
-        "ECCO‑Darwin",
-        "surface drifter observations"
-      ],
-      "methodologies": [
-        "numerical ocean modeling",
-        "data assimilation",
-        "high‑resolution global simulations",
-        "satellite altimetry (wide‑swath)",
-        "surface drifter tracking",
-        "remote sensing",
-        "biogeochemical modeling",
-        "acoustic propagation modeling",
-        "sensitivity analysis",
-        "field sampling of sediments"
-      ],
-      "disease_areas": [],
-      "populations": [
-        "global ocean",
-        "Greenland Sea",
-        "coastal and open‑ocean sediments",
-        "transatlantic acoustic pathways",
-        "riverine input regions"
-      ],
-      "funded_grants": [],
-      "recent_publications": [
-        {
-          "title": "Combining surface drifters and high resolution global simulations enables the mapping of internal tide surface energy.",
-          "year": 2025,
-          "journal": "Scientific reports",
-          "abstract": "By dissipating energy and generating mixing, internal tides (ITs) are important for the climatological evolution of the ocean. Our understanding of this class of ocean variability is however hindered by the rarity of observations capable of capturing ITs with global coverage. The data provided by the Global Drifter Program (GDP) offer high temporal resolution and quasi-global coverage, thus bringing promising perspectives. However, due to their inherent drifting nature, these instruments provide"
-        },
-        {
-          "title": "Attribution of Space-Time Variability in Global-Ocean Dissolved Inorganic Carbon.",
-          "year": 2022,
-          "journal": "Global biogeochemical cycles",
-          "abstract": "The inventory and variability of oceanic dissolved inorganic carbon (DIC) is driven by the interplay of physical, chemical, and biological processes. Quantifying the spatiotemporal variability of these drivers is crucial for a mechanistic understanding of the ocean carbon sink and its future trajectory. Here, we use the Estimating the Circulation and Climate of the Ocean-Darwin ocean biogeochemistry state estimate to generate a global-ocean, data-constrained DIC budget and investigate how spatia"
-        }
-      ],
-      "profile_url": "",
-      "orcid": "0000-0001-9940-8409",
-      "h_index": null,
-      "committee_service": [],
-      "integrity_flags": [
-        "Not found in EAH Active Academics (2026-03-23) — may no longer be employed"
-      ],
-      "last_enriched": "2026-03-20T15:45:10.488602+00:00",
-      "eah_active": false
     },
     {
       "first_name": "Mark",
@@ -38087,7 +37142,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -38165,7 +37219,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Physical Laboratory",
       "employee_class": "Academic: Faculty",
       "job_code": "1207",
@@ -38359,7 +37412,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Physical Laboratory",
       "employee_class": "Academic: Faculty",
       "job_code": "1243",
@@ -38880,7 +37932,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Climate/Atmos Sci/Phy Oceanog",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -39061,7 +38112,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -39683,7 +38733,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -40020,7 +39069,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Ctr For Marine Biotec & Biomed",
       "employee_class": "Academic: Faculty",
       "job_code": "3258",
@@ -40421,7 +39469,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Ctr For Marine Biotec & Biomed",
       "employee_class": "Academic: Faculty",
       "job_code": "1110",
@@ -40512,7 +39559,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Igpp",
       "employee_class": "Academic: Faculty",
       "job_code": "1200",
@@ -40709,7 +39755,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -40958,8 +40003,7 @@
       "department_l5": "",
       "department_eah": "CLIMATE/ATMOS SCI/PHY OCEANOG",
       "department_code": "259",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "Richard",
@@ -41312,7 +40356,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Biology",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -41347,7 +40390,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Geosciences Research Div.",
       "employee_class": "Academic: Faculty",
       "job_code": "1300",
@@ -41683,7 +40725,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -42185,7 +41226,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -42653,7 +41693,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Ctr For Marine Biotec & Biomed",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -43027,7 +42066,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -43097,7 +42135,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Recall",
       "job_code": "3802",
@@ -43361,7 +42398,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Igpp",
       "employee_class": "Academic: Faculty",
       "job_code": "1200",
@@ -43491,7 +42527,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Faculty",
       "job_code": "1143",
@@ -43611,7 +42646,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Physical Laboratory",
       "employee_class": "Academic: Faculty",
       "job_code": "1300",
@@ -43726,7 +42760,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Faculty",
       "job_code": "1300",
@@ -44010,8 +43043,7 @@
       "department_l5": "",
       "department_eah": "SIO DEPARTMENT",
       "department_code": "256",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "Paul",
@@ -44507,7 +43539,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -44967,7 +43998,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Climate/Atmos Sci/Phy Oceanog",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -45116,7 +44146,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Climate/Atmos Sci/Phy Oceanog",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -45227,7 +44256,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -45295,7 +44323,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -45313,275 +44340,6 @@
       "eah_status": "Active",
       "orcid": "0000-0001-7373-1662",
       "last_enriched": "2026-03-24T21:49:19.529837+00:00"
-    },
-    {
-      "first_name": "Veerabhadran",
-      "last_name": "Ramanathan",
-      "degrees": [
-        "PhD"
-      ],
-      "title": "Distinguished Professor Emeritus",
-      "email": "vramanathan@ucsd.edu",
-      "research_interests": "Climate science, greenhouse gases, aerosols, radiative forcing, global warming",
-      "research_interests_enriched": "Professor Ramanathan’s research centers on the physical and societal dimensions of climate change, with a particular emphasis on how aerosols—including black carbon from biomass burning—alter radiative forcing and cloud‑radiation feedbacks. He integrates satellite remote sensing, airborne field campaigns, and climate modeling to quantify regional climate impacts, especially over South Asia and the Indian Ocean. His work also explores the health and policy implications of air‑pollution–driven warming, linking climate mitigation strategies to clean‑cooking technologies and equity considerations.",
-      "expertise_keywords": [
-        "climate change",
-        "global warming",
-        "greenhouse gases",
-        "aerosols",
-        "black carbon",
-        "radiative forcing",
-        "cloud‑aerosol interactions",
-        "atmospheric brown clouds",
-        "cloud feedbacks",
-        "climate modeling",
-        "climate mitigation",
-        "air pollution health impacts",
-        "clean cooking technologies",
-        "climate‑health nexus",
-        "environmental policy"
-      ],
-      "methodologies": [
-        "satellite remote sensing",
-        "airborne measurement campaigns (AUAVs)",
-        "field experiments (e.g., INDOEX, CAPMEX)",
-        "radiative transfer modeling",
-        "climate system modeling",
-        "observational data analysis",
-        "laboratory aerosol characterization",
-        "social science methods (focus groups, surveys)",
-        "interdisciplinary policy analysis"
-      ],
-      "disease_areas": [
-        "respiratory diseases",
-        "cardiovascular disease",
-        "climate‑sensitive health outcomes",
-        "COVID‑19 (climate and air‑quality interactions)"
-      ],
-      "populations": [
-        "rural communities in India",
-        "global population dependent on biomass cooking",
-        "general human populations affected by air‑pollution"
-      ],
-      "funded_grants": [
-        {
-          "title": "EAGER: Project Surya - Mitigation of Global and Regional Climate Change",
-          "agency": "NSF",
-          "nsf_program": "Climate & Large-Scale Dynamics, Atmospheric Chemistry",
-          "amount": "300000",
-          "start_date": "06/15/2010",
-          "end_date": "05/31/2013",
-          "nsf_award_id": "1016496",
-          "abstract": "Project Surya is a scientific experiment aimed at quantifying the radiative forcing due to black carbon (BC) from biomass-fueled cooking and heating fires. Roughly 2.5 billion people depend on biomass burning for cooking and heating which contributes about 25% of the global BC emissions. Absorption of solar radiation by BC is estimated to contribute as much as 20% to 55% of the CO2 to global warming. \r\n\r\nThe study will encompass a detailed analysis of the results of efforts to reduce BC emission"
-        },
-        {
-          "title": "Emerging Topics in Biogeochemical Cycles (ETBC):  Cheju Atmospheric Brown Cloud (ABC) Plume-Monsoon Experiment [CAPMEX] during the Summer Olympics of 2008",
-          "agency": "NSF",
-          "nsf_program": "Climate & Large-Scale Dynamics, EnvS-Environmtl Sustainability, EMERGING TOPICS",
-          "amount": "514835",
-          "start_date": "06/01/2008",
-          "end_date": "05/31/2010",
-          "nsf_award_id": "0836093",
-          "abstract": "The research consists of two components: (A) basic research into atmospheric brown clouds (ABCs) and their influence on climate, the water cycle and the carbon cycle; and (B) new environmental measurement technologies. It is co-supported by NSF's Geosciences and Engineering Directorates.\r\n\r\n(A) The Principal Investigators (PIs), their students and post-docs will investigate how atmospheric brown clouds (ABCs) reduce photosynthetically active radiation (PAR) and broad band solar radiation reachin",
-          "co_pis": [
-            "Venkata R Muvva vmuvva@ucsd.edu"
-          ]
-        },
-        {
-          "title": "Cloud-Climate Feedbacks due to Extra-Tropical Clouds Systems",
-          "agency": "NSF",
-          "nsf_program": "BE: CARBON & WATER IN ES, Climate & Large-Scale Dynamics",
-          "amount": "4037614",
-          "start_date": "08/01/2007",
-          "end_date": "01/31/2015",
-          "nsf_award_id": "0721142",
-          "abstract": "Summary\r\nThe main goal of this research is to reduce the uncertainty in climate change predictions by improving our understanding of cloud feedback effects and aerosol-cloud interactions in liquid as well as ice phase clouds. The proposal focuses on the extra tropical cloud systems of the Pacific Ocean, one of the major contributors to the negative global mean net cloud forcing, and examines its role in global and in North American climate change. It will investigate the role of aerosols, partic"
-        },
-        {
-          "title": "Maldives AUAV Campaign (MAC): Observing Aerosol-Cloud-Radiation Interactions Simultaneously from Three Stacked Autonomous Unmanned Aerial Vehicles (AUAVs)",
-          "agency": "NSF",
-          "nsf_program": "Climate & Large-Scale Dynamics",
-          "amount": "449421",
-          "start_date": "11/01/2005",
-          "end_date": "10/31/2007",
-          "nsf_award_id": "0542531",
-          "abstract": "The fundamental science objective of the Maldives AUAV Campaign (MAC) is to provide new insights into how aerosols and clouds regulate the planetary albedo, with particular emphasis on how anthropogenic aerosols are modifying the albedo of cloudy skies (the so-called \"indirect effect\"). MAC also will be able to estimate solar absorption by clouds and to measure the dependence of that absorption on the amount of absorbing aerosols.  One of the fundamental challenges of observing how aerosols modu"
-        },
-        {
-          "title": "Development of a Long-Range and Light-Weight Autonomous Unmanned Aerial Vehicle (AUAV) and Instrument Platform for the Global Albedo Project",
-          "agency": "NSF",
-          "nsf_program": "FARE-Facil for Atmos Res & Ed, Climate & Large-Scale Dynamics, Major Research Instrumentation, Atmospheric Chemistry",
-          "amount": "640664",
-          "start_date": "08/15/2003",
-          "end_date": "07/31/2007",
-          "nsf_award_id": "0320802",
-          "abstract": "Ramanathan and Kosmatka, UCSD\r\n\r\nATM 0320802\r\n\r\nThis Major Research Instrumentation (MRI) development grant will support the design, fabrication and field testing of long duration affordable ($50,000 - $75,000) Autonomous Unmanned Aerial Vehicles (AUAV) that have long duration (greater than 1 day) and long range (about five thousand kilometers required for flights from Southern California to Hawaii) with light instrument payloads (less than 5kg). Such AUAVs are not currently available.\r\n\r\nThe in",
-          "co_pis": [
-            "John B Kosmatka jkosmatka@ucsd.edu"
-          ]
-        },
-        {
-          "title": "Aerosol Radiative Forcing and Climate Response: A Regional Focus",
-          "agency": "NSF",
-          "nsf_program": "International Research Collab, Climate & Large-Scale Dynamics",
-          "amount": "3316259",
-          "start_date": "06/01/2002",
-          "end_date": "05/31/2007",
-          "nsf_award_id": "0201946",
-          "abstract": "Regionally, anthropogenic aerosols can lead to large reductions in the surface solar irradiance, a corresponding increase in atmospheric solar heating, stronger low-level inversions, suppression of rainfall due to the direct microphysical effect, and less efficient removal of pollutants. These aerosol effects, in addition to altering the temperature distribution, can also lead to a weaker hydrological cycle, a major environmental issue for the 21st century. The overall goal of this project is to"
-        },
-        {
-          "title": "Indian Ocean Experiment",
-          "agency": "NSF",
-          "nsf_program": "PHYSICAL METEOROLOGY, Physical & Dynamic Meteorology, LARGE-SCALE DYNAMIC METEOROLOG, Climate & Large-Scale Dynamics",
-          "amount": "1142866",
-          "start_date": "09/15/1997",
-          "end_date": "08/31/2000",
-          "nsf_award_id": "9612887",
-          "abstract": "Abstract  ATM-9612887  Ramanathan, V.  University of California, San Diego  Title: Indian Ocean Experiment (INDOEX)    The Indian Ocean Experiment (INDOEX) is an international field experiment with  participation from France, Germany, India, the Netherlands, and the United  States.  The main effort under the U.S. component focuses on assessing the role  of sulfates and other continental aerosols in global radiative forcing and is  being supported jointly by the Department of Energy and the Natio"
-        },
-        {
-          "title": "Center for Clouds, Chemistry and Climate",
-          "agency": "NSF",
-          "nsf_program": "TTP-Thermal Transport Process, Climate & Large-Scale Dynamics, INDIA (SCIENTIFIC RESEARCH), INDIA, AISL, INSTRUCTIONAL MATERIALS DEVELP, SCIENCE AND TECHNOLOGY CENTERS",
-          "amount": "13477751",
-          "start_date": "07/01/1994",
-          "end_date": "07/31/2002",
-          "nsf_award_id": "9405024",
-          "abstract": "Abstract  ATM-9405024  Ramanathan, V.  Scripps Institution of Oceanography, UCSD  Title: Center for Clouds, Chemistry and Climate (C4)    NSF's Science and Technology Center for Clouds, Chemistry and  Climate (C4) was established to develop theoretical, observational  and modeling bases required to understand and predict Earth's  changing climate as affected by clouds, radiation and atmospheric  chemistry and their interactions, be these a result of natural  causes and/or human activities.  Alth"
-        },
-        {
-          "title": "Central Equatorial Pacific Experiment (CEPEX); An           Airborne Experiment to Address Issues Concerning the Role   of Cloud-Radiation Feedbacks in El-Nino and Global Warming",
-          "agency": "NSF",
-          "nsf_program": "Climate & Large-Scale Dynamics",
-          "amount": "123225",
-          "start_date": "10/01/1992",
-          "end_date": "09/30/1993",
-          "nsf_award_id": "9209665",
-          "abstract": "The \"thermostat hypothesis\" depends upon three postulates.                 First, a super-greenhouse effect exists.  Satellite data reveal                 that the atmosphere over the warmest oceans is very humid, causing              it to trap a significant fraction of the infrared energy emitted by             the ocean.  Furthermore, the infrared trapping - known as the                   greenhouse effect - increases very sharply with increasing SST in               regions of convection.  T"
-        },
-        {
-          "title": "Cloud-Radiative Forcing H2O Greenhouse Effect and Climate",
-          "agency": "NSF",
-          "nsf_program": "Climate & Large-Scale Dynamics, Other PRA-Othr Prgrm Rltd Admn",
-          "amount": "539955",
-          "start_date": "10/01/1990",
-          "end_date": "09/30/1994",
-          "nsf_award_id": "9011259",
-          "abstract": "This investigation aims at understanding the interaction between                atmospheric dynamics and cloud radiative forcing. The study                     involves: (a) Analyses of satellite observations of the radiation               budget, water vapor and cloud images as well as conventional                    observations of SST, heights and moisture fields to obtain the                  regional distributions of seasonal and inter-annual variations                  in cloud radiative f"
-        },
-        {
-          "title": "Cloud-Climate Interations:  The Role of Cloud-Microphysical and Radiative Processes",
-          "agency": "NSF",
-          "nsf_program": "Climate & Large-Scale Dynamics, CROSS-DIRECTORATE PROGRAMS",
-          "amount": "383618",
-          "start_date": "03/01/1987",
-          "end_date": "08/31/1990",
-          "nsf_award_id": "8700286"
-        }
-      ],
-      "recent_publications": [
-        {
-          "title": "Aerosol demasking enhances climate warming over South Asia.",
-          "year": 2023,
-          "journal": "NPJ climate and atmospheric science",
-          "abstract": "Anthropogenic aerosols mask the climate warming caused by greenhouse gases (GHGs). In the absence of observational constraints, large uncertainties plague the estimates of this masking effect. Here we used the abrupt reduction in anthropogenic emissions observed during the COVID-19 societal slow-down to characterize the aerosol masking effect over South Asia. During this period, the aerosol loading decreased substantially and our observations reveal that the magnitude of this aerosol demasking c"
-        },
-        {
-          "title": "Mitigating climate disruption in time: A self-consistent approach for avoiding both near-term and long-term global warming.",
-          "year": 2022,
-          "journal": "Proceedings of the National Academy of Sciences of the United States of America",
-          "mesh_terms": [
-            "Carbon Dioxide",
-            "Climate",
-            "Fossil Fuels",
-            "Global Warming",
-            "Greenhouse Gases"
-          ],
-          "abstract": "The ongoing and projected impacts from human-induced climate change highlight the need for mitigation approaches to limit warming in both the near term (<2050) and the long term (>2050). We clarify the role of non-CO2 greenhouse gases and aerosols in the context of near-term and long-term climate mitigation, as well as the net effect of decarbonization strategies targeting fossil fuel (FF) phaseout by 2050. Relying on Intergovernmental Panel on Climate Change radiative forcing, we show that the "
-        },
-        {
-          "title": "Trends in surface equivalent potential temperature: A more comprehensive metric for global warming and weather extremes.",
-          "year": 2022,
-          "journal": "Proceedings of the National Academy of Sciences of the United States of America",
-          "abstract": "Trends in surface air temperature (SAT) are a common metric for global warming. Using observations and observationally driven models, we show that a more comprehensive metric for global warming and weather extremes is the trend in surface equivalent potential temperature (Thetae_sfc) since it also accounts for the increase in atmospheric humidity and latent energy. From 1980 to 2019, while SAT increased by 0.79[Formula: see text], Thetae_sfc increased by 1.48[Formula: see text] globally and as m"
-        },
-        {
-          "title": "Call for comments: climate and clean air responses to covid-19.",
-          "year": 2020,
-          "journal": "International journal of public health"
-        },
-        {
-          "title": "Air Pollution, Climate Change, and Health: A Declaration from the Vatican.",
-          "year": 2018,
-          "journal": "Annals of the American Thoracic Society",
-          "mesh_terms": [
-            "Academies and Institutes",
-            "Air Pollution",
-            "Catholicism",
-            "Climate Change",
-            "Cooperative Behavior",
-            "Ecosystem",
-            "Education",
-            "Environmental Policy",
-            "Evidence-Based Practice",
-            "Health",
-            "Humans",
-            "Religious Personnel"
-          ]
-        },
-        {
-          "title": "The need to monitor actions on the social determinants of health.",
-          "year": 2017,
-          "journal": "Bulletin of the World Health Organization",
-          "mesh_terms": [
-            "Health Equity",
-            "Health Status Disparities",
-            "Healthcare Disparities",
-            "Humans",
-            "Social Determinants of Health"
-          ]
-        },
-        {
-          "title": "Air pollution: Harmful soot spurs climate-policy action.",
-          "year": 2015,
-          "journal": "Nature",
-          "mesh_terms": [
-            "Air Pollution",
-            "Environmental Policy",
-            "Global Warming",
-            "Humans"
-          ]
-        },
-        {
-          "title": "How do people in rural India perceive improved stoves and clean fuel? Evidence from Uttar Pradesh and Uttarakhand.",
-          "year": 2014,
-          "journal": "International journal of environmental research and public health",
-          "mesh_terms": [
-            "Cooking",
-            "Decision Making",
-            "Energy-Generating Resources",
-            "Female",
-            "Focus Groups",
-            "Health Knowledge, Attitudes, Practice",
-            "Humans",
-            "India",
-            "Male",
-            "Public Opinion",
-            "Socioeconomic Factors"
-          ],
-          "abstract": "Improved cook stoves (ICS) have been widely touted for their potential to deliver the triple benefits of improved household health and time savings, reduced deforestation and local environmental degradation, and reduced emissions of black carbon, a significant short-term contributor to global climate change. Yet diffusion of ICS technologies among potential users in many low-income settings, including India, remains slow, despite decades of promotion. This paper explores the variation in percept"
-        }
-      ],
-      "profile_url": "https://scripps.ucsd.edu/profiles/vramanathan",
-      "orcid": "0000-0002-3534-5987",
-      "h_index": null,
-      "committee_service": [],
-      "integrity_flags": [
-        "Not found in EAH Active Academics (2026-03-23) — may no longer be employed"
-      ],
-      "last_enriched": "2026-03-20T15:40:03.813981+00:00",
-      "eah_active": false
     },
     {
       "first_name": "Robert",
@@ -45696,7 +44454,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Geosciences Research Div.",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -45773,7 +44530,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Climate/Atmos Sci/Phy Oceanog",
       "employee_class": "Academic: Faculty",
       "job_code": "1200",
@@ -45856,7 +44612,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Geosciences Research Div.",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -46251,7 +45006,6 @@
       ],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -46286,7 +45040,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -46319,7 +45072,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Biology",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -46352,7 +45104,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Climate/Atmos Sci/Phy Oceanog",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -46385,7 +45136,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Climate/Atmos Sci/Phy Oceanog",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -46418,7 +45168,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -46824,8 +45573,7 @@
       "department_l5": "",
       "department_eah": "MARINE BIOLOGY",
       "department_code": "242",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "David",
@@ -47135,8 +45883,7 @@
       "department_l5": "",
       "department_eah": "SIO DEPARTMENT",
       "department_code": "256",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "Amina",
@@ -47154,7 +45901,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Geosciences Research Div.",
       "employee_class": "Academic: Faculty",
       "job_code": "1200",
@@ -47187,7 +45933,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Biology",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -47220,7 +45965,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -47721,8 +46465,7 @@
       "department_l5": "",
       "department_eah": "SIO DEPARTMENT",
       "department_code": "256",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "Robert",
@@ -47740,7 +46483,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Biology",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -47773,7 +46515,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Igpp",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -47806,7 +46547,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Biology",
       "employee_class": "Academic: Faculty",
       "job_code": "1680",
@@ -47839,7 +46579,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Faculty",
       "job_code": "1300",
@@ -48218,8 +46957,7 @@
       "department_l5": "",
       "department_eah": "MARINE BIOLOGY",
       "department_code": "242",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "Jerome",
@@ -48237,7 +46975,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Physical Laboratory",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -48270,7 +47007,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Biology",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -48303,7 +47039,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Biology",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -48336,7 +47071,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -48369,7 +47103,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -48402,7 +47135,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Igpp",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -48435,7 +47167,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Igpp",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -48468,7 +47199,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -48501,7 +47231,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Physical Laboratory",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -48597,8 +47326,7 @@
       "department_l5": "",
       "department_eah": "SIO DEPARTMENT",
       "department_code": "256",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "George",
@@ -48616,7 +47344,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Climate/Atmos Sci/Phy Oceanog",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -48649,7 +47376,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Climate/Atmos Sci/Phy Oceanog",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -48665,110 +47391,6 @@
       "department_eah": "CLIMATE/ATMOS SCI/PHY OCEANOG",
       "department_code": "259",
       "eah_status": "Active"
-    },
-    {
-      "first_name": "Yui",
-      "last_name": "Takeshita",
-      "degrees": [
-        "PhD"
-      ],
-      "title": "Associate Professor",
-      "email": "",
-      "research_interests": "Ocean acidification, carbon cycling, chemical sensors, coral reefs, coastal biogeochemistry",
-      "research_interests_enriched": "Yui Takeshita investigates how ocean acidification and carbon cycling affect coastal and reef ecosystems, with a focus on the biogeochemical processes that regulate seawater chemistry. Her work integrates the development and deployment of advanced chemical sensors—such as solid‑state pH, total alkalinity, and chloride ion sensors—for high‑resolution, in situ monitoring across temperate seagrass meadows, coral reefs, and deep‑sea environments. She also employs biogeochemical modeling to assess ecosystem buffering capacity and predict future changes under rising CO₂ levels.",
-      "expertise_keywords": [
-        "ocean acidification",
-        "carbon cycling",
-        "marine biogeochemistry",
-        "coastal biogeochemistry",
-        "coral reef ecology",
-        "seagrass meadow carbon dynamics",
-        "chemical sensor development",
-        "pH sensors",
-        "total alkalinity sensors",
-        "chloride ion selective electrodes",
-        "ion‑sensitive field‑effect transistors (ISFET)",
-        "deep‑sea pressure‑tolerant sensors",
-        "global sensor networks",
-        "biogeochemical modeling"
-      ],
-      "methodologies": [
-        "sensor fabrication and engineering",
-        "electrochemical measurement (pH, alkalinity, chloride)",
-        "field deployment of in situ sensors",
-        "laboratory calibration and validation",
-        "biogeochemical modeling",
-        "field sampling of seawater chemistry",
-        "pressure‑tolerant sensor design"
-      ],
-      "disease_areas": [
-        "ocean acidification",
-        "carbon cycling",
-        "marine biogeochemistry",
-        "coral reef ecology",
-        "coastal ecosystem dynamics",
-        "deep‑sea chemical monitoring"
-      ],
-      "populations": [
-        "California temperate seagrass meadows",
-        "coral reef systems",
-        "coastal waters",
-        "deep‑sea environments"
-      ],
-      "funded_grants": [],
-      "recent_publications": [
-        {
-          "title": "Expected limits on the ocean acidification buffering potential of a temperate seagrass meadow.",
-          "year": 2018,
-          "journal": "Ecological applications : a publication of the Ecological Society of America",
-          "mesh_terms": [
-            "California",
-            "Carbon Dioxide",
-            "Ecosystem",
-            "Hydrogen-Ion Concentration",
-            "Models, Biological",
-            "Seasons",
-            "Seawater",
-            "Zosteraceae"
-          ],
-          "abstract": "Ocean acidification threatens many marine organisms, especially marine calcifiers. The only global-scale solution to ocean acidification remains rapid reduction in CO"
-        },
-        {
-          "title": "Solid State Sensor for Simultaneous Measurement of Total Alkalinity and pH of Seawater.",
-          "year": 2017,
-          "journal": "ACS sensors",
-          "abstract": "A novel design is demonstrated for a solid state, reagent-less sensor capable of rapid and simultaneous measurement of pH and Total Alkalinity (A"
-        },
-        {
-          "title": "Deep-Sea DuraFET: A Pressure Tolerant pH Sensor Designed for Global Sensor Networks.",
-          "year": 2016,
-          "journal": "Analytical chemistry",
-          "abstract": "Increasing atmospheric carbon dioxide is driving a long-term decrease in ocean pH which is superimposed on daily to seasonal variability. These changes impact ecosystem processes, and they serve as a record of ecosystem metabolism. However, the temporal variability in pH is observed at only a few locations in the ocean because a ship is required to support pH observations of sufficient precision and accuracy. This paper describes a pressure tolerant Ion Sensitive Field Effect Transistor pH senso"
-        },
-        {
-          "title": "Characterization of an ion sensitive field effect transistor and chloride ion selective electrodes for pH measurements in seawater.",
-          "year": 2014,
-          "journal": "Analytical chemistry",
-          "mesh_terms": [
-            "Chlorides",
-            "Electrodes",
-            "Hydrogen-Ion Concentration",
-            "Ions",
-            "Seawater",
-            "Transistors, Electronic"
-          ],
-          "abstract": "Characterization of several potentiometric cells without a liquid junction has been carried out in universal buffer, aqueous HCl, and artificial seawater media. The electrodes studied include Ion Sensitive Field Effect Transistor (ISFET) pH electrodes, and Chloride-Ion Selective Electrodes (Cl-ISE) directly exposed to the solution. These electrodes were compared directly to the conventional hydrogen electrode and silver-silver chloride electrode in order to report the degree to which they obey i"
-        }
-      ],
-      "profile_url": "",
-      "orcid": "",
-      "h_index": null,
-      "committee_service": [],
-      "integrity_flags": [
-        "Not found in EAH Active Academics (2026-03-23) — may no longer be employed"
-      ],
-      "last_enriched": "2026-03-20T15:44:05.291263+00:00",
-      "eah_active": false
     },
     {
       "first_name": "Lynne",
@@ -49138,8 +47760,7 @@
       "department_l5": "",
       "department_eah": "SIO DEPARTMENT",
       "department_code": "256",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "Lisa",
@@ -49157,7 +47778,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -49190,7 +47810,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Biology",
       "employee_class": "Academic: Faculty",
       "job_code": "1200",
@@ -49223,7 +47842,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Biology",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -49256,7 +47874,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Physical Laboratory",
       "employee_class": "Academic: Faculty",
       "job_code": "900",
@@ -49289,7 +47906,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -49322,7 +47938,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Biology",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -49355,7 +47970,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Ctr For Marine Biotec & Biomed",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -49388,7 +48002,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Climate/Atmos Sci/Phy Oceanog",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -49421,7 +48034,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -49454,7 +48066,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -49487,7 +48098,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -49520,7 +48130,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Igpp",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -49659,8 +48268,7 @@
       "department_l5": "",
       "department_eah": "CLIMATE/ATMOS SCI/PHY OCEANOG",
       "department_code": "259",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "Gunnar",
@@ -49678,7 +48286,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -49711,7 +48318,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -49744,7 +48350,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -49777,7 +48382,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -49810,7 +48414,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Climate/Atmos Sci/Phy Oceanog",
       "employee_class": "Academic: Faculty",
       "job_code": "1300",
@@ -49843,7 +48446,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -49876,7 +48478,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Climate/Atmos Sci/Phy Oceanog",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -49909,7 +48510,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Climate/Atmos Sci/Phy Oceanog",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -49942,7 +48542,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -49975,7 +48574,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Integr Oceanography Div",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -50008,7 +48606,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Igpp",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -50041,7 +48638,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Igpp",
       "employee_class": "Academic: Faculty",
       "job_code": "1300",
@@ -50349,8 +48945,7 @@
       "department_l5": "",
       "department_eah": "CLIMATE/ATMOS SCI/PHY OCEANOG",
       "department_code": "259",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     },
     {
       "first_name": "A",
@@ -50368,7 +48963,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Marine Biology",
       "employee_class": "Academic: Emeriti",
       "job_code": "1132",
@@ -50401,7 +48995,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -50434,7 +49027,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Climate/Atmos Sci/Phy Oceanog",
       "employee_class": "Academic: Faculty",
       "job_code": "1100",
@@ -50467,7 +49059,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -50500,7 +49091,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -50533,7 +49123,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Climate/Atmos Sci/Phy Oceanog",
       "employee_class": "Academic: Emeriti",
       "job_code": "3800",
@@ -50566,7 +49155,6 @@
       "recent_publications": [],
       "committee_service": [],
       "integrity_flags": [],
-      "eah_active": true,
       "subdepartment": "Sio Department",
       "employee_class": "Academic: Faculty",
       "job_code": "1675",
@@ -50961,8 +49549,7 @@
       "department_l5": "",
       "department_eah": "IGPP",
       "department_code": "260",
-      "eah_status": "Active",
-      "eah_active": true
+      "eah_status": "Active"
     }
   ]
 }

@@ -332,10 +332,6 @@ def enrich_all(sources=None, faculty_ids=None, dry_run=False,
     else:
         indices = list(range(len(faculty_list)))
 
-    # Skip faculty flagged as inactive by EAH enrichment
-    indices = [i for i in indices
-               if faculty_list[i].get("eah_active") is not False]
-
     logger.info("Starting enrichment for %d faculty members (dept: %s).",
                 len(indices), department or "hwsph")
     results = []

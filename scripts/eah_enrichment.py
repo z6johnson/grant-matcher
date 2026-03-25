@@ -293,7 +293,6 @@ def apply_eah_fields(faculty, eah_row, updates_tracker):
     elif "eah_status" not in faculty:
         faculty["eah_status"] = ""
 
-    faculty["eah_active"] = True
     return faculty
 
 
@@ -318,7 +317,6 @@ def create_new_faculty(eah_row, has_subdepartment):
         "recent_publications": [],
         "committee_service": [],
         "integrity_flags": [],
-        "eah_active": True,
     }
 
     if has_subdepartment:
@@ -376,40 +374,36 @@ def process_school(school_name, config, eah_rows):
     # Track what was matched
     matched_eah_keys = set()
     matched_count = 0
-    flagged_inactive = []
+    removed_inactive = []
     updates_tracker = defaultdict(int)
 
-    # Match each existing faculty member
+    # Match each existing faculty member; collect unmatched for removal
+    matched_faculty = []
     for faculty in faculty_list:
         eah_row = match_faculty_to_eah(faculty, by_email, by_email_local, by_name)
 
         if eah_row:
             matched_count += 1
-            # Track which EAH record was matched
             eah_key = (eah_row.get("Email", "").strip().lower() or
                        eah_row.get("Employee Name", "").strip())
             matched_eah_keys.add(eah_key)
 
             # Apply EAH fields
             apply_eah_fields(faculty, eah_row, updates_tracker)
+            matched_faculty.append(faculty)
         else:
-            # Flag as inactive
-            faculty["eah_active"] = False
-            if "integrity_flags" not in faculty:
-                faculty["integrity_flags"] = []
-            flag_msg = "Not found in EAH Active Academics (2026-03-23) — may no longer be employed"
-            if flag_msg not in faculty["integrity_flags"]:
-                faculty["integrity_flags"].append(flag_msg)
+            # Remove: not found in EAH Active Academics
             name = f"{faculty.get('first_name', '')} {faculty.get('last_name', '')}"
-            flagged_inactive.append(name)
+            removed_inactive.append(name)
+
+    # Replace faculty list with only matched (active) faculty
+    faculty_list[:] = matched_faculty
 
     # Deduplicate: if multiple existing records matched the same EAH person,
     # keep the one with the most enriched data and remove the others.
     seen_emails = {}
     to_remove = []
     for i, faculty in enumerate(faculty_list):
-        if not faculty.get("eah_active"):
-            continue
         email = (faculty.get("email") or "").strip().lower()
         if not email:
             continue
@@ -456,16 +450,16 @@ def process_school(school_name, config, eah_rows):
 
     # Report
     print(f"  Matched: {matched_count}")
-    print(f"  Flagged inactive: {len(flagged_inactive)}")
+    print(f"  Removed (not in EAH): {len(removed_inactive)}")
     print(f"  New faculty added: {len(new_faculty)}")
     print(f"  Total faculty now: {len(faculty_list)}")
 
     if updates_tracker:
         print(f"  Fields updated: {dict(updates_tracker)}")
 
-    if flagged_inactive:
-        print(f"\n  --- Flagged as Inactive ({len(flagged_inactive)}) ---")
-        for name in sorted(flagged_inactive):
+    if removed_inactive:
+        print(f"\n  --- Removed ({len(removed_inactive)}) ---")
+        for name in sorted(removed_inactive):
             print(f"    {name}")
 
     if new_faculty:
@@ -478,7 +472,7 @@ def process_school(school_name, config, eah_rows):
         "original_count": original_count,
         "eah_count": len(deduped),
         "matched": matched_count,
-        "flagged_inactive": len(flagged_inactive),
+        "removed_inactive": len(removed_inactive),
         "new_added": len(new_faculty),
         "total_now": len(faculty_list),
         "updates": dict(updates_tracker),
@@ -504,11 +498,11 @@ def main():
     print("SUMMARY")
     print(f"{'='*60}")
     total_matched = sum(r["matched"] for r in results)
-    total_flagged = sum(r["flagged_inactive"] for r in results)
+    total_flagged = sum(r["removed_inactive"] for r in results)
     total_new = sum(r["new_added"] for r in results)
     total_now = sum(r["total_now"] for r in results)
     print(f"  Total matched: {total_matched}")
-    print(f"  Total flagged inactive: {total_flagged}")
+    print(f"  Total removed (not in EAH): {total_flagged}")
     print(f"  Total new faculty added: {total_new}")
     print(f"  Total faculty across all schools: {total_now}")
 
