@@ -4,6 +4,15 @@ Queries the public ORCID API to find researcher profiles and extract
 works, employment, and funding data. No authentication required for
 public records.
 
+Search strategy (in priority order):
+  1. Use existing ORCID ID if already on the record (validate affiliation)
+  2. Search by email (most reliable disambiguation)
+  3. Search by name + UCSD affiliation
+  4. (No broad name-only fallback — too many false matches)
+
+All search results are validated against UCSD employment history before
+accepting to prevent wrong-person contamination.
+
 API docs: https://info.orcid.org/documentation/api-tutorials/
 """
 
@@ -15,6 +24,18 @@ logger = logging.getLogger(__name__)
 
 SEARCH_URL = "https://pub.orcid.org/v3.0/search/"
 RECORD_URL = "https://pub.orcid.org/v3.0/{orcid_id}"
+
+# Affiliation strings that indicate UCSD employment.  Checked as
+# case-insensitive substrings against the organization name in the
+# ORCID employment / education sections.
+UCSD_AFFILIATION_STRINGS = [
+    "university of california san diego",
+    "university of california, san diego",
+    "uc san diego",
+    "ucsd",
+    "scripps institution of oceanography",
+    "scripps research",
+]
 
 
 class ORCIDSource(BaseSource):
@@ -35,21 +56,67 @@ class ORCIDSource(BaseSource):
         """Search ORCID for this faculty member and extract their record."""
         first = faculty_dict.get("first_name", "")
         last = faculty_dict.get("last_name", "")
+        email = (faculty_dict.get("email") or "").strip().lower()
 
         # If we already have their ORCID ID, go directly to the record
+        # but still validate affiliation to catch stale/wrong IDs.
         existing_orcid = faculty_dict.get("orcid")
         if existing_orcid:
-            return self._fetch_record(existing_orcid, first, last)
+            record = self._fetch_full_record(existing_orcid)
+            if record and self._has_ucsd_affiliation(record):
+                return self._extract_data(record, existing_orcid, first, last)
+            elif record:
+                logger.info(
+                    "Existing ORCID %s for %s %s has no UCSD affiliation — skipping",
+                    existing_orcid, first, last,
+                )
+                # Fall through to search — the stored ORCID may be wrong
 
-        # Otherwise, search by name + affiliation
-        orcid_id = self._search_orcid(first, last)
-        if not orcid_id:
+        # Strategy 1: Search by email (most reliable)
+        if email:
+            orcid_id = self._search_by_email(email)
+            if orcid_id:
+                record = self._fetch_full_record(orcid_id)
+                if record:
+                    return self._extract_data(record, orcid_id, first, last)
+
+        # Strategy 2: Search by name + UCSD affiliation
+        orcid_id = self._search_by_name(first, last)
+        if orcid_id:
+            record = self._fetch_full_record(orcid_id)
+            if record and self._has_ucsd_affiliation(record):
+                return self._extract_data(record, orcid_id, first, last)
+            elif record:
+                logger.info(
+                    "ORCID %s matched name %s %s but has no UCSD affiliation — skipping",
+                    orcid_id, first, last,
+                )
+
+        return None
+
+    def _search_by_email(self, email):
+        """Search ORCID by email address — best disambiguation signal."""
+        query = f"email:{email}"
+        resp = self._get(SEARCH_URL, params={"q": query, "rows": 1})
+        if not resp:
             return None
 
-        return self._fetch_record(orcid_id, first, last)
+        try:
+            data = resp.json()
+        except ValueError:
+            return None
 
-    def _search_orcid(self, first_name, last_name):
-        """Search ORCID for a researcher by name and UCSD affiliation."""
+        results = data.get("result") or []
+        if not results:
+            return None
+
+        orcid_id = results[0].get("orcid-identifier", {}).get("path")
+        if orcid_id:
+            logger.info("Found ORCID %s via email search for %s", orcid_id, email)
+        return orcid_id
+
+    def _search_by_name(self, first_name, last_name):
+        """Search ORCID by name + UCSD affiliation. Returns best match."""
         query = (
             f'given-names:{first_name} AND family-name:{last_name} '
             f'AND affiliation-org-name:"University of California San Diego"'
@@ -66,36 +133,56 @@ class ORCIDSource(BaseSource):
 
         results = data.get("result") or []
         if not results:
-            # Try broader search without affiliation
-            query_broad = f"given-names:{first_name} AND family-name:{last_name}"
-            resp = self._get(SEARCH_URL, params={"q": query_broad, "rows": 3})
-            if not resp:
-                return None
-            try:
-                data = resp.json()
-            except ValueError:
-                return None
-            results = data.get("result") or []
-
-        if not results:
             return None
 
-        # Return the first match's ORCID ID
-        orcid_id = results[0].get("orcid-identifier", {}).get("path")
-        return orcid_id
+        # If only one result, return it (affiliation validation happens in caller)
+        if len(results) == 1:
+            return results[0].get("orcid-identifier", {}).get("path")
 
-    def _fetch_record(self, orcid_id, first_name, last_name):
-        """Fetch the full ORCID record and extract relevant data."""
+        # Multiple results — return the first one; caller will validate
+        # affiliation on the full record.  We do NOT fall back to a broad
+        # name-only search, which caused wrong-person contamination.
+        return results[0].get("orcid-identifier", {}).get("path")
+
+    @staticmethod
+    def _has_ucsd_affiliation(record):
+        """Check if the ORCID record has UCSD in employment or education."""
+        activities = record.get("activities-summary", {})
+
+        # Check employments
+        for group in activities.get("employments", {}).get("affiliation-group", []):
+            for summary in group.get("summaries", []):
+                emp = summary.get("employment-summary", {})
+                org_name = (emp.get("organization", {}).get("name") or "").lower()
+                for ucsd_str in UCSD_AFFILIATION_STRINGS:
+                    if ucsd_str in org_name:
+                        return True
+
+        # Check educations as fallback (some faculty list UCSD only there)
+        for group in activities.get("educations", {}).get("affiliation-group", []):
+            for summary in group.get("summaries", []):
+                edu = summary.get("education-summary", {})
+                org_name = (edu.get("organization", {}).get("name") or "").lower()
+                for ucsd_str in UCSD_AFFILIATION_STRINGS:
+                    if ucsd_str in org_name:
+                        return True
+
+        return False
+
+    def _fetch_full_record(self, orcid_id):
+        """Fetch the full ORCID record JSON."""
         url = RECORD_URL.format(orcid_id=orcid_id)
         resp = self._get(url)
         if not resp:
             return None
 
         try:
-            record = resp.json()
+            return resp.json()
         except ValueError:
             return None
 
+    def _extract_data(self, record, orcid_id, first_name, last_name):
+        """Extract structured data from a validated ORCID record."""
         result = {
             "orcid": orcid_id,
             "_source_url": f"https://orcid.org/{orcid_id}",
