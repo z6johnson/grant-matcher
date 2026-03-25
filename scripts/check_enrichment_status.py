@@ -36,8 +36,6 @@ for name, path in FACULTIES.items():
         data = json.load(f)
     fac = data["faculty"]
     total = len(fac)
-    active = [f for f in fac if f.get("eah_active") is not False]
-    inactive = total - len(active)
 
     with_enriched_interests = sum(1 for f in fac if f.get("research_interests_enriched"))
     grand_total += total
@@ -45,14 +43,12 @@ for name, path in FACULTIES.items():
 
     timestamps = [f["last_enriched"] for f in fac if f.get("last_enriched")]
     latest = max(timestamps) if timestamps else "N/A"
-    earliest = min(timestamps) if timestamps else "N/A"
     never_enriched = total - len(timestamps)
 
     print(f"\n{SEP}")
-    print(f"{name} -- {total} faculty ({len(active)} active, {inactive} inactive)")
+    print(f"{name} -- {total} faculty")
     print(SEP)
     print(f"  Last enrichment run:  {latest}")
-    print(f"  Earliest enrichment:  {earliest}")
     print(f"  Never enriched:       {never_enriched}")
     print()
 
@@ -100,11 +96,12 @@ print(f"  Without enriched interests:      {missing} ({missing/grand_total*100:.
 print(f"\n{SEP}")
 print("COMPLETION EVALUATION")
 print(SEP)
-if grand_enriched / grand_total >= 0.90:
+pct = grand_enriched / grand_total
+if pct >= 0.90:
     print("  STATUS: COMPLETE -- enrichment coverage >= 90%")
-elif grand_enriched / grand_total >= 0.70:
+elif pct >= 0.70:
     print("  STATUS: MOSTLY COMPLETE -- enrichment coverage >= 70%")
-elif grand_enriched / grand_total >= 0.50:
+elif pct >= 0.50:
     print("  STATUS: PARTIAL -- enrichment coverage >= 50%")
 else:
     print("  STATUS: INCOMPLETE -- enrichment coverage < 50%")

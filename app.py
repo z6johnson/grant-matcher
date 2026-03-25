@@ -102,7 +102,7 @@ def faculty_directory():
         dept = None
 
     data = get_faculty_data(dept)
-    faculty = [f for f in data.get("faculty", []) if f.get("eah_active") is not False]
+    faculty = data.get("faculty", [])
 
     query = request.args.get("q", "").strip().lower()
     limit = min(int(request.args.get("limit", 20)), 50)
@@ -172,8 +172,7 @@ def match():
         dept = None
 
     try:
-        faculty = [f for f in get_faculty_data(dept)["faculty"]
-                   if f.get("eah_active") is not False]
+        faculty = get_faculty_data(dept)["faculty"]
         results = process_grant(text, faculty)
     except Exception as e:
         logger.exception("Document processing failed")
@@ -201,8 +200,7 @@ def match_text():
         dept = None
 
     try:
-        faculty = [f for f in get_faculty_data(dept)["faculty"]
-                   if f.get("eah_active") is not False]
+        faculty = get_faculty_data(dept)["faculty"]
         results = process_text(text, faculty)
     except Exception as e:
         logger.exception("Text processing failed")
