@@ -69,8 +69,8 @@ def main():
         print(f"Progress: {completed}/{total}")
 
     # Time budget: leave 5 minutes of headroom for setup/commit steps.
-    # Default to 85 minutes (matching the 90-minute workflow timeout).
-    time_budget = int(os.environ.get("ENRICH_TIME_BUDGET", 85 * 60))
+    # Default to 115 minutes (matching the 120-minute workflow timeout).
+    time_budget = int(os.environ.get("ENRICH_TIME_BUDGET", 115 * 60))
 
     results = enrich_all(
         sources=sources,
