@@ -92,7 +92,9 @@ Both LLM calls use the same model via LiteLLM (default: `openai/api-gpt-oss-120b
 
 ## Enrichment Pipeline
 
-Faculty profiles start with basic directory data (name, title, email, research interests) and are enriched weekly from six public academic data sources. The pipeline runs via GitHub Actions every Sunday and commits updated data back to the repository.
+Faculty rosters are seeded from the **Employee Activity Hub (EAH) Active Academics** CSV export (`data/EAH Active Academics.csv`), which serves as the institutional source of truth for all three schools. The EAH reconciliation script (`scripts/eah_enrichment.py`) cross-references EAH records against faculty JSON files using tiered matching (exact email + name, email local-part + name, name-only with fuzzy first-name handling). It adds new faculty, updates EAH-sourced fields (employee class, PI eligibility, job code, department hierarchy), deduplicates by data richness, and removes faculty no longer in the EAH active roster.
+
+After seeding, faculty profiles are enriched weekly from six public academic data sources. The pipeline runs via GitHub Actions every Sunday and commits updated data back to the repository.
 
 ### Data Sources
 
@@ -192,6 +194,25 @@ All workflows live in `.github/workflows/` and are consolidated into two files:
 
 Both workflows support `workflow_dispatch` with school selector, sources, faculty indices, and dry-run mode. The enrichment workflow verifies that SIO/Jacobs rosters are seeded before proceeding. Vercel auto-deploys when enriched data is committed.
 
+### Faculty Roster Seeding (EAH)
+
+The **Employee Activity Hub (EAH) Active Academics** CSV export is the authoritative seed source for all three faculty rosters. The reconciliation script (`scripts/eah_enrichment.py`) performs:
+
+1. **Tiered matching** against existing faculty records:
+   - **Tier 1:** Exact email + name match (highest confidence)
+   - **Tier 2:** Email local-part + name match
+   - **Tier 3:** Name-only match with fuzzy first-name handling (hyphenated names, middle names, initials)
+2. **Field updates:** Employee class, PI eligibility, job code, department hierarchy (5 levels), VC area, division/school
+3. **New faculty addition:** EAH records not matched to existing faculty are added with initialized enrichment fields
+4. **Deduplication:** When multiple records match the same EAH person, the record with the richest enrichment data is kept (scored by: enriched interests = 3 pts, each grant = 1 pt, each publication = 1 pt, keywords = 1 pt, ORCID = 1 pt)
+5. **Inactive removal:** Faculty present in JSON but absent from the current EAH export are flagged and removed
+
+To update rosters from a fresh EAH export, replace `data/EAH Active Academics.csv` and run:
+
+```bash
+python scripts/eah_enrichment.py
+```
+
 ## Architecture
 
 | Component | Platform | What it does |
@@ -210,23 +231,28 @@ research-alignment/
 ├── index.html                # Single-page frontend (three-tab interface)
 ├── .env.example              # Environment variable template
 ├── data/
-│   ├── faculty.json          # HWSPH faculty directory
-│   ├── sio_faculty.json      # SIO faculty directory
-│   ├── jacobs_faculty.json   # Jacobs faculty directory
-│   └── enrichment_log.json   # Append-only audit log
+│   ├── faculty.json              # HWSPH faculty directory
+│   ├── sio_faculty.json          # SIO faculty directory
+│   ├── jacobs_faculty.json       # Jacobs faculty directory
+│   ├── enrichment_log.json       # Append-only audit log
+│   └── EAH Active Academics.csv  # EAH roster export (seed source for all schools)
 ├── static/
 │   ├── css/style.css         # UCSD-branded styles (Seed Style Guide)
 │   └── js/app.js             # Frontend logic
 ├── utils/
 │   ├── document_parser.py    # PDF/TXT text extraction
 │   └── grant_matcher.py      # LLM matching engine + keyword pre-filter
+├── scripts/
+│   ├── eah_enrichment.py         # EAH CSV reconciliation (seed + update all schools)
+│   ├── check_enrichment_status.py # Enrichment coverage audit
+│   └── remove_inactive_faculty.py # Inactive faculty cleanup
 ├── enrichment/
-│   ├── pipeline.py           # Enrichment orchestrator (HWSPH, SIO, Jacobs)
-│   ├── normalizer.py         # LLM-based data normalization
-│   ├── run.py                # GitHub Actions runner
-│   ├── seed_sio.py           # SIO faculty seeding script
-│   ├── seed_jacobs.py        # Jacobs faculty seeding script
-│   └── sources/              # Data source adapters (NIH, NSF, PubMed, ORCID, UCSD, Scripps)
+│   ├── pipeline.py               # Enrichment orchestrator (HWSPH, SIO, Jacobs)
+│   ├── normalizer.py             # LLM-based data normalization
+│   ├── run.py                    # GitHub Actions runner
+│   ├── seed_sio.py               # SIO faculty seeding script
+│   ├── seed_jacobs.py            # Jacobs faculty seeding script
+│   └── sources/                  # Data source adapters (NIH, NSF, PubMed, ORCID, UCSD, Scripps)
 └── docs/
     ├── responsible-ai-seed-principles.md
     └── seed-style-guide.md
@@ -253,6 +279,18 @@ Each faculty record includes:
 | `h_index` | int | Hirsch index |
 | `funded_grants` | object[] | Funded project history |
 | `recent_publications` | object[] | Recent publication history |
+| `employee_class` | string | EAH employee classification |
+| `pi_eligible` | string | PI eligibility flag from EAH (`"Y"` / `"N"`) |
+| `job_code` | string | UCSD job code |
+| `job_code_description` | string | Human-readable job code description |
+| `vc_area` | string | Vice Chancellor area |
+| `division_school` | string | Division or school from EAH |
+| `department_eah` | string | Department name from EAH |
+| `department_code` | string | Department code from EAH |
+| `department_unit` | string | Department/unit from EAH |
+| `department_l2`–`department_l5` | string | Department hierarchy levels from EAH |
+| `eah_status` | string | EAH reconciliation status |
+| `last_enriched` | string | ISO 8601 timestamp of last enrichment run |
 
 ## API
 

@@ -21,7 +21,9 @@ AUTHOR_PAPERS_URL = "https://api.semanticscholar.org/graph/v1/author/{author_id}
 
 class SemanticScholarSource(BaseSource):
     source_name = "semantic_scholar"
-    min_request_interval = 3.0  # conservative for free tier (100 req / 5 min)
+    # Free tier: 100 requests per 5 minutes = 1 req/3s.
+    # With API key: 1 req/s is safe.
+    min_request_interval = 3.0
     confidence = 0.75  # good but name disambiguation can be imperfect
 
     def __init__(self):
@@ -39,14 +41,19 @@ class SemanticScholarSource(BaseSource):
         first = faculty_dict.get("first_name", "")
         last = faculty_dict.get("last_name", "")
 
-        author_id = self._search_author(first, last)
+        author_id, search_hit = self._search_author(first, last)
         if not author_id:
             return None
 
-        return self._fetch_author_data(author_id, first, last)
+        return self._fetch_author_data(author_id, first, last, search_hit=search_hit)
 
     def _search_author(self, first_name, last_name):
-        """Search for an author by name, filtering to UCSD affiliation."""
+        """Search for an author by name, filtering to UCSD affiliation.
+
+        Returns (author_id, search_result_dict) so the caller can use
+        h-index and paper count from the search response directly,
+        saving an extra API call.
+        """
         query = f"{first_name} {last_name}"
         resp = self._get(
             AUTHOR_SEARCH_URL,
@@ -57,16 +64,16 @@ class SemanticScholarSource(BaseSource):
             },
         )
         if not resp:
-            return None
+            return None, None
 
         try:
             data = resp.json()
         except ValueError:
-            return None
+            return None, None
 
         authors = data.get("data") or []
         if not authors:
-            return None
+            return None, None
 
         # Try to find the UCSD-affiliated match
         ucsd_keywords = [
@@ -77,7 +84,7 @@ class SemanticScholarSource(BaseSource):
             affiliations = author.get("affiliations") or []
             aff_text = " ".join(affiliations).lower()
             if any(kw in aff_text for kw in ucsd_keywords):
-                return author.get("authorId")
+                return author.get("authorId"), author
 
         # If no affiliation match, check if the first result has a
         # reasonable paper count (>5) and name is close enough
@@ -87,39 +94,45 @@ class SemanticScholarSource(BaseSource):
             full_name = f"{first_name} {last_name}".lower()
             if full_name in name or name in full_name:
                 if (top.get("paperCount") or 0) > 5:
-                    return top.get("authorId")
+                    return top.get("authorId"), top
 
-        return None
+        return None, None
 
-    def _fetch_author_data(self, author_id, first_name, last_name):
-        """Fetch author profile and recent papers."""
-        # Get author profile with metrics
-        resp = self._get(
-            AUTHOR_URL.format(author_id=author_id),
-            params={
-                "fields": "name,affiliations,paperCount,citationCount,hIndex,homepage,externalIds",
-            },
-        )
-        if not resp:
-            return None
+    def _fetch_author_data(self, author_id, first_name, last_name, search_hit=None):
+        """Fetch author profile and recent papers.
 
-        try:
-            author = resp.json()
-        except ValueError:
-            return None
-
+        Uses metrics from the search response when available to avoid
+        an extra API call for the author profile.
+        """
         result = {
             "_source_url": f"https://www.semanticscholar.org/author/{author_id}",
         }
 
-        # h-index
-        h_index = author.get("hIndex")
-        if h_index is not None:
-            result["h_index"] = h_index
-
-        # Total paper/citation counts for the normalizer
-        result["paper_count"] = author.get("paperCount")
-        result["citation_count"] = author.get("citationCount")
+        # Use search result metrics if available (saves one API call).
+        # The search response includes hIndex and paperCount when
+        # requested via the fields parameter.
+        if search_hit and search_hit.get("hIndex") is not None:
+            result["h_index"] = search_hit["hIndex"]
+            result["paper_count"] = search_hit.get("paperCount")
+            result["citation_count"] = search_hit.get("citationCount")
+        else:
+            # Fall back to a separate author profile fetch
+            resp = self._get(
+                AUTHOR_URL.format(author_id=author_id),
+                params={
+                    "fields": "name,affiliations,paperCount,citationCount,hIndex,homepage,externalIds",
+                },
+            )
+            if resp:
+                try:
+                    author = resp.json()
+                    h_index = author.get("hIndex")
+                    if h_index is not None:
+                        result["h_index"] = h_index
+                    result["paper_count"] = author.get("paperCount")
+                    result["citation_count"] = author.get("citationCount")
+                except ValueError:
+                    pass
 
         # Fetch recent papers
         papers = self._fetch_papers(author_id)

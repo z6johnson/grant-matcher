@@ -38,10 +38,17 @@ class BaseSource(ABC):
         self._last_request_time = time.time()
 
     def _get(self, url, **kwargs):
-        """Rate-limited GET request with error handling."""
+        """Rate-limited GET request with error handling and 429 retry."""
         self._rate_limit()
         try:
             resp = self._session.get(url, timeout=30, **kwargs)
+            # Retry once on rate limit (429) with backoff
+            if resp.status_code == 429:
+                retry_after = int(resp.headers.get("Retry-After", 5))
+                logger.info("Rate limited by %s, retrying in %ds", url, retry_after)
+                time.sleep(retry_after)
+                self._last_request_time = time.time()
+                resp = self._session.get(url, timeout=30, **kwargs)
             resp.raise_for_status()
             return resp
         except requests.RequestException as e:
