@@ -159,8 +159,9 @@ class SemanticScholarSource(BaseSource):
                                     orcid, author.get("authorId"))
                         return author.get("authorId")
 
-                    # Match by full name (both first and last must appear)
-                    if last in author_name and first in author_name:
+                    # Match by last name + first initial (S2 often abbreviates
+                    # first names, e.g. "W. Al-Delaimy" for "Wael Al-Delaimy")
+                    if first and last and last in author_name and author_name.startswith(first[0]):
                         logger.info("Paper-based name match: %s %s -> S2 %s (%s)",
                                     first, last, author.get("authorId"), author_name)
                         return author.get("authorId")
