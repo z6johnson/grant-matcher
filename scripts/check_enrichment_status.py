@@ -143,22 +143,32 @@ for name, (school_key, path) in FACULTIES.items():
 print(f"\n{SEP}")
 print("ENRICHMENT LOG ANALYSIS")
 print(SEP)
-log_path = os.path.join(DATA_DIR, "enrichment_log.json")
-with open(log_path) as f:
-    log = json.load(f)
-print(f"  Total log entries: {len(log)}")
+log_path = os.path.join(DATA_DIR, "enrichment_log.jsonl")
+if os.path.exists(log_path):
+    log = []
+    with open(log_path) as f:
+        for line in f:
+            line = line.strip()
+            if line:
+                try:
+                    log.append(json.loads(line))
+                except json.JSONDecodeError:
+                    continue
+    print(f"  Total log entries: {len(log)}")
 
-if log:
-    dates = [e.get("retrieved_at", "")[:10] for e in log if e.get("retrieved_at")]
-    date_counts = Counter(dates)
-    print("  Entries by date:")
-    for d in sorted(date_counts.keys()):
-        print(f"    {d}: {date_counts[d]} entries")
+    if log:
+        dates = [e.get("retrieved_at", "")[:10] for e in log if e.get("retrieved_at")]
+        date_counts = Counter(dates)
+        print("  Entries by date:")
+        for d in sorted(date_counts.keys()):
+            print(f"    {d}: {date_counts[d]} entries")
 
-    sources = Counter(e.get("source_name", "unknown") for e in log)
-    print("  Entries by source:")
-    for s, c in sources.most_common():
-        print(f"    {s:25s} {c}")
+        sources = Counter(e.get("source_name", "unknown") for e in log)
+        print("  Entries by source:")
+        for s, c in sources.most_common():
+            print(f"    {s:25s} {c}")
+else:
+    print("  Log file not found (enrichment_log.jsonl) -- will be created on next enrichment run")
 
 print(f"\n{SEP}")
 print("OVERALL SUMMARY")

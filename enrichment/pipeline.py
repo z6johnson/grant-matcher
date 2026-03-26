@@ -29,7 +29,7 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), "..", "data")
 FACULTY_PATH = os.path.join(DATA_DIR, "faculty.json")
 SIO_FACULTY_PATH = os.path.join(DATA_DIR, "sio_faculty.json")
 JACOBS_FACULTY_PATH = os.path.join(DATA_DIR, "jacobs_faculty.json")
-LOG_PATH = os.path.join(DATA_DIR, "enrichment_log.json")
+LOG_PATH = os.path.join(DATA_DIR, "enrichment_log.jsonl")
 
 # Registry of available sources — used by HWSPH (public health) faculty
 SOURCE_CLASSES = {
@@ -66,6 +66,9 @@ ALL_SOURCE_CLASSES = {**SOURCE_CLASSES, **SIO_SOURCE_CLASSES, **JACOBS_SOURCE_CL
 
 # Fields that can be directly written to a faculty record (non-JSON)
 DIRECT_FIELDS = {"profile_url", "orcid", "google_scholar_id", "h_index", "email"}
+
+# Direct fields that should be refreshed on every run (not write-once)
+REFRESHABLE_FIELDS = {"h_index"}
 
 # Fields that are JSON arrays and should be replaced wholesale
 JSON_FIELDS = {"funded_grants", "recent_publications", "expertise_keywords"}
@@ -111,31 +114,60 @@ def _source_classes_for(department=None):
 
 
 def _load_log():
-    """Load enrichment log, creating it if missing."""
+    """Load enrichment log (JSONL format), returning empty list if missing."""
     if not os.path.exists(LOG_PATH):
         return []
+    entries = []
     with open(LOG_PATH) as f:
-        return json.load(f)
+        for line in f:
+            line = line.strip()
+            if line:
+                try:
+                    entries.append(json.loads(line))
+                except json.JSONDecodeError:
+                    continue
+    return entries
 
 
-def _save_log(log_entries):
-    """Atomically write enrichment log."""
-    fd, tmp = tempfile.mkstemp(dir=DATA_DIR, suffix=".json")
-    try:
-        with os.fdopen(fd, "w") as f:
-            json.dump(log_entries, f, indent=2, ensure_ascii=False)
-            f.write("\n")
-        os.replace(tmp, LOG_PATH)
-    except Exception:
-        os.unlink(tmp)
-        raise
+def _append_log_batch(entries):
+    """Append multiple entries to the enrichment log (JSONL, O(1) per entry)."""
+    if not entries:
+        return
+    with open(LOG_PATH, "a") as f:
+        for entry in entries:
+            f.write(json.dumps(entry, ensure_ascii=False) + "\n")
 
 
 def _append_log(entry):
     """Append a single entry to the enrichment log."""
+    _append_log_batch([entry])
+
+
+def _rotate_log(max_age_days=30):
+    """Prune log entries older than max_age_days."""
+    if not os.path.exists(LOG_PATH):
+        return
     entries = _load_log()
-    entries.append(entry)
-    _save_log(entries)
+    if not entries:
+        return
+    from datetime import timedelta
+    cutoff_dt = datetime.now(timezone.utc) - timedelta(days=max_age_days)
+    cutoff_iso = cutoff_dt.isoformat()
+
+    kept = [e for e in entries if (e.get("retrieved_at") or "") >= cutoff_iso]
+    pruned = len(entries) - len(kept)
+    if pruned > 0:
+        fd, tmp = tempfile.mkstemp(dir=DATA_DIR, suffix=".jsonl")
+        try:
+            with os.fdopen(fd, "w") as f:
+                for entry in kept:
+                    f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+            os.replace(tmp, LOG_PATH)
+        except Exception:
+            os.unlink(tmp)
+            raise
+        logger.info("Log rotation: pruned %d entries older than %d days, kept %d.",
+                     pruned, max_age_days, len(kept))
 
 
 def _make_log_entry(faculty_index, source_name, field, old_value, new_value,
@@ -255,7 +287,7 @@ def enrich_faculty(faculty_index, sources=None, dry_run=False, department=None,
 
             if field in DIRECT_FIELDS or field in JSON_FIELDS:
                 old_value = faculty_dict.get(field)
-                if old_value and field not in JSON_FIELDS:
+                if old_value is not None and field not in JSON_FIELDS and field not in REFRESHABLE_FIELDS:
                     continue  # Don't overwrite existing direct fields
 
                 if field == "email" and isinstance(value, str):
@@ -330,6 +362,10 @@ def enrich_all(sources=None, faculty_ids=None, dry_run=False,
     Returns:
         List of per-faculty summary dicts.
     """
+    # Rotate log at the start of each batch run to prevent unbounded growth
+    if not dry_run:
+        _rotate_log()
+
     data = _load_faculty(department)
     faculty_list = data["faculty"]
 
@@ -387,16 +423,14 @@ def enrich_all(sources=None, faculty_ids=None, dry_run=False,
         # Periodic save to avoid losing work on crash/timeout
         if not dry_run and (i + 1) % SAVE_INTERVAL == 0 and all_log_entries:
             _save_faculty(data, department)
-            for entry in all_log_entries:
-                _append_log(entry)
+            _append_log_batch(all_log_entries)
             all_log_entries = []
             logger.info("Checkpoint: saved after %d/%d faculty.", i + 1, len(indices))
 
     # Final save
     if not dry_run and all_log_entries:
         _save_faculty(data, department)
-        for entry in all_log_entries:
-            _append_log(entry)
+        _append_log_batch(all_log_entries)
     elif not dry_run and results:
         # Even if no new log entries in last batch, save faculty data
         _save_faculty(data, department)

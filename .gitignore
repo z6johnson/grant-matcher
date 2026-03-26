@@ -8,3 +8,4 @@ venv/
 .vercel/
 node_modules/
 data/enrichment_log.json
+data/enrichment_log.jsonl
