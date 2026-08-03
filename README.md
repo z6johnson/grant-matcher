@@ -95,7 +95,7 @@ The "How rankings are calculated" panel below the results provides the full meth
 
 ### Model Configuration
 
-Both LLM calls use the same model via LiteLLM (default: `openai/api-gpt-oss-120b`). The extraction call uses `max_tokens=2000`; the matching call uses `max_tokens=4000`. JSON mode is requested when the model supports it; the system retries without it if unsupported. Each call retries once on parse failure (1-second backoff).
+Both LLM calls use the same model via LiteLLM (default: `openai/api-gemma-4-31b`). The extraction call uses `max_tokens=2000`; the matching call uses `max_tokens=4000`. JSON mode is requested when the model supports it; the system retries without it if unsupported. Each call retries once on parse failure (1-second backoff).
 
 ## Enrichment Pipeline
 
@@ -316,7 +316,7 @@ removes one of those ceilings — keep the order.
    `{"include_not_found": true}`. The resolver now retries misses with
    name-variant queries and an institution-unfiltered search (hits must
    still carry UCSD affiliation evidence), repopulating the candidate queue.
-4. **Adjudication**: set `IDENTITY_LLM_MODEL=openai/api-gpt-oss-120b` (the
+4. **Adjudication**: set `IDENTITY_LLM_MODEL=openai/api-gemma-4-31b` (the
    empirically calibrated model) and enqueue `identity_llm_sweep`. The
    recheck stamp is per-model, so groups another model abstained on are
    re-opened automatically — `{"force": true}` is only needed to re-ask the
@@ -534,7 +534,7 @@ a persistent `/data` volume. For the data-layer / alternative-host details, see
 |----------|----------|-------------|
 | `LITELLM_API_KEY` | Yes | LLM API key |
 | `LITELLM_API_BASE` | Yes | LLM API endpoint URL |
-| `LITELLM_MODEL` | No | Model identifier (default: `openai/api-gpt-oss-120b`) |
+| `LITELLM_MODEL` | No | Model identifier (default: `openai/api-gemma-4-31b`) |
 | `IDENTITY_LLM_MODEL` | No | Scoped model override for the identity sweep only (default: falls back to `LITELLM_MODEL`); e.g. `openai/api-deepseek-v4-flash` for cheaper, higher-throughput adjudication |
 | `ENABLE_IDENTITY_LLM_SWEEP` | No | Enable the weekly scheduled LLM adjudication sweep (default: `false`; turn on only after calibration) |
 | `IDENTITY_LLM_ACCEPT_CONFIDENCE` | No | Min LLM confidence to auto-accept an OpenAlex-candidate match (default: `0.9`) |
