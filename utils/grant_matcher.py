@@ -11,7 +11,7 @@ PRE_FILTER_CANDIDATES = 60
 
 
 def _get_model():
-    model = os.getenv("LITELLM_MODEL", "api-gpt-oss-120b")
+    model = os.getenv("LITELLM_MODEL", "api-gemma-4-31b")
     if "/" not in model:
         model = f"openai/{model}"
     return model

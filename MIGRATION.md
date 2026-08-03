@@ -34,7 +34,7 @@ In the Vercel dashboard, go to your project → **Settings** → **Environment V
 |----------|----------|-------|
 | `LITELLM_API_KEY` | Yes | Your LLM provider API key |
 | `LITELLM_API_BASE` | Yes | Your LLM API base URL |
-| `LITELLM_MODEL` | No | Default: `openai/api-gpt-oss-120b` |
+| `LITELLM_MODEL` | No | Default: `openai/api-gemma-4-31b` |
 
 ### Verify
 
